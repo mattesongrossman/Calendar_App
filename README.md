@@ -1,25 +1,20 @@
-# Project_3_Calendar_App
-
-Name: Calend-You’re
-
-Overview:
-
+# Project 3 Calendar App
 Our project is a customizable calendar app where users can CRUD upcoming and past events. We will provide the user with different views, starting off with the conventional monthly, daily, yearly, views, but also allow for other features that other apps don’t provide(such as a view for just one weekday many weeks in a row, or a view window where users can filter out by type of event(with type of event being a column in the table).  
 
-General features:
+## General features:
+- Monthly view — selecting a date would reveal more info about that day’s events 
+- Adding/creating events
+- `moment.js` library for handling date localization
+- User auth
+- Web app
+- Potential 3rd party APIs: Google Calendar, Facebook Calendar, ESPN, Eventbrite (we’ll probably pick one if we have time)
 
-Monthly view -- selecting a date would reveal more info about that day’s events 
-Adding/creating events
-Moment.js library for handling date localization
-Potential 3rd party APIs: Google Calendar, Facebook Calendar, ESPN, Eventbrite (we’ll probably pick one if we have time)
-User auth
-Web app
+## Models:
+Event — handles calls to DB for CRUD on calendar events.
 
-Models:
-Event - Handles calls to DB for CRUD on calendar events.
-User - user login info, hashed passwords, session data
+User — user login info, hashed passwords, session data.
 
-User stories:
+## User stories:
 
 - As a working parent of 4, I want a calendar app where I can keep track of different types of events (personal, professional) so I can see just one type of event when I want to. 
 - As someone who’s busiest day of the week is Wednesday, I want an app where I can just see my Wednesday schedule for the next few months so that I can plan for my busiest day of the week. 
@@ -35,3 +30,7 @@ User stories:
 - As someone who doesn’t like to have to log into google drive just to view their calendar, I want an app where my calendar is the first thing that pops up so that I can get right down to business. 
 - As an avid planner, I want to simultaneously see a monthly view while also being able to see details about a selected day’s events, so I can keep track of both and see them as a whole. 
 - As a busy person who checks their calendar on-the-go, I want to be able to color code my events by type, so that I can easily know which type of event I have coming up.
+
+## DB Schema
+
+## Wireframes
