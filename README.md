@@ -32,6 +32,7 @@ User — user login info, hashed passwords, session data.
 - As a busy person who checks their calendar on-the-go, I want to be able to color code my events by type, so that I can easily know which type of event I have coming up.
 
 ## DB Schema
-<img src="db-schema.png" width="600">
+<img src="./img/ERD/db-schema.png" width="600">
 
 ## Wireframes
+<img src="./img/wireframes/Calendar.png" width="400"><img src="./img/wireframes/Day_Detail.png" width="400"><img src="./img/wireframes/Event_Edit.png" width="400"><img src="./img/wireframes/Create_Event.png" width="400">
