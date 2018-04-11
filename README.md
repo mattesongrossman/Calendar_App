@@ -1,5 +1,5 @@
 # Project 3 Calendar App
-Our project is a customizable calendar app where users can CRUD upcoming and past events. We will provide the user with different views, starting off with the conventional monthly, daily, yearly, views, but also allow for other features that other apps don’t provide(such as a view for just one weekday many weeks in a row, or a view window where users can filter out by type of event(with type of event being a column in the table).  
+Our project is a calendar web app where users can create, edit, delete, and view upcoming and past events. The calendar's monthly view will remain constant (the user can toggle between months), while the side panel will change based on the user's actions. If a specific day is selected, the side panel will show all of the events on that day broken down by time. From there, the user can choose to edit or delete any of those events. Clicking on the edit button will render an edit form where the user can update information about their event including name, date, time, and any notes they might have. If the add button in the top nav bar is clicked, the side panel will render a create form where the user can create a new event.  
 
 ## General features:
 - Monthly view — selecting a date would reveal more info about that day’s events 
