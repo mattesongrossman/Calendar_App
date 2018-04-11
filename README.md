@@ -32,5 +32,6 @@ User — user login info, hashed passwords, session data.
 - As a busy person who checks their calendar on-the-go, I want to be able to color code my events by type, so that I can easily know which type of event I have coming up.
 
 ## DB Schema
+<img src="db-schema.png" width="600">
 
 ## Wireframes
