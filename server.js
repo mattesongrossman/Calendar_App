@@ -60,8 +60,8 @@ app.put('/api/edit/:id', jsonParser, (request, response) => {
 
 // Delete an event
 app.delete("/api/event/:id", (request, response) => {
-  const id = request.params.id
-  Event.findById(id)
+  const eventId = request.params.id
+  Event.findById(eventId)
     .then(event => {
       return event.delete(event.id)
     })
