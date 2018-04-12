@@ -17,12 +17,13 @@ app.use(cors())
 // Create application/json parser
 const jsonParser = bodyParser.json()
 
+
 // Get one user
 
 // Create new user
 
 // Get all events for one user (Need to modify to extract user or session id)
-app.get("/api/event", (request, response) => {
+app.get("/api/events", (request, response) => {
   Event.getAll().then(events => {
     response.json(events)
   })
@@ -57,11 +58,10 @@ app.put('/api/edit/:id', jsonParser, (request, response) => {
     })
 })
 
-
 // Delete an event
 app.delete("/api/event/:id", (request, response) => {
-  const id = request.params.id
-  Event.findById(id)
+  const eventId = request.params.id
+  Event.findById(eventId)
     .then(event => {
       return event.delete(event.id)
     })
@@ -69,6 +69,7 @@ app.delete("/api/event/:id", (request, response) => {
       response.json(event)
     })
 })
+
 
 // Start server
 app.listen(4567, () => console.log("Express server listening on port 4567!"))
