@@ -1,20 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
+// import NavBar from './NavBar';
+import Calendar from './Calendar';
+// import SidePanel from './SidePanel';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <Router>
+        <div className="container">
+          <h1 className="app-header">CALENDAR</h1>
+          <div className="view-window">
+            {/* <NavBar /> */}
+            <Calendar />
+            {/* <SidePanel /> */}
+          </div>
+        </div>
+      </Router>
+    )
   }
 }
 
