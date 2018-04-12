@@ -22,3 +22,5 @@ const connectionURL = "postgres://localhost:5432/calendar_db";
 const db = pgp(connectionURL);
 
 module.exports = db;
+
+
