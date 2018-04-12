@@ -35,7 +35,7 @@ User — user login info, hashed passwords, session data.
 <img src="./img/ERD/db-schema.png" width="600">
 
 ## Wireframes
-<img src="./img/wireframes/Calendar.png" width="425"> <img src="./img/wireframes/Day_Detail.png" width="425"> <img src="./img/wireframes/Event_Edit.png" width="425"> <img src="./img/wireframes/Create_Event.png" width="425">
+<img src="img/wireframes/Calendar.png" width="425"> <img src="img/wireframes/Day_Detail.png" width="425"> <img src="img/wireframes/Event_Detail.png" width="425"> <img src="img/wireframes/Event_Edit.png" width="425"> <img src="img/wireframes/Create_Event.png" width="425"> <img src="img/wireframes/Register.png" width="425"> <img src="img/wireframes/Login.png" width="425">
 
 ## Family Tree Diagram
 <img src="./img/family-tree/IMG_0303.JPG" width="600">
