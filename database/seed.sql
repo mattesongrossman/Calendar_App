@@ -5,7 +5,6 @@ INSERT INTO users
 VALUES
   ('RBorg', 'hi27', 'supersession');
 
- -- psql -f ./database/seed.sql
 INSERT INTO events
   (event_id, user_id, event_name, event_time, event_description, event_type)
 VALUES

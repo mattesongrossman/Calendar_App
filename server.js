@@ -31,10 +31,24 @@ const jsonParser = bodyParser.json();
 
 
 // Create an event
-
+app.post('/api/create', jsonParser, (request, response) => {
+  const newEvent = request.body;
+  Event.create(newEvent)
+    .then(event => {
+      response.redirect(`/api/event/${event.id}`);
+    })
+})
 
 // Edit an event
-
+app.put('/api/edit/:id', jsonParser, (request, response) => {
+  const eventId = request.params.id;
+  const event = request.body;
+  console.log(event);
+  Event.edit(event)
+    .then(event => {
+      response.redirect(`/api/event/${eventId}`);
+    })
+})
 
 // Delete an event
 
