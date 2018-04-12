@@ -2,6 +2,7 @@
 Our project is a calendar web app where users can create, edit, delete, and view upcoming and past events. The calendar's monthly view will remain constant (the user can toggle between months), while the side panel will change based on the user's actions. This allows the user to see all the events and the month as a whole, while also viewing any details or making changes. If a specific day is selected, the side panel will show all of the events on that day broken down by time. From there, the user can choose to edit or delete any of those events. Clicking on the edit button will render an edit form where the user can update information about their event including name, date, time, and any notes they might have. If the add button in the top nav bar is clicked, the side panel will render a create form where the user can create a new event.  
 
 ### Explanations of the technologies used
+(We'll add to this later)
 - `bluebird`
 - `body-parser`
 - `cors`
@@ -10,9 +11,10 @@ Our project is a calendar web app where users can create, edit, delete, and view
 - `pg-promise`
 
 ### Installation instructions for dependencies
-
+(We'll add to this later)
 
 ### Unsolved problems or hurdles your team had to overcome
+(We'll add to this later)
 
 ## General features:
 - Monthly view — selecting a date would reveal more info about that day’s events
