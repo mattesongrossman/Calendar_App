@@ -27,6 +27,7 @@ const jsonParser = bodyParser.json();
 // Get all events for one user
 
 
+
 // Get one event from one user's events
 
 
