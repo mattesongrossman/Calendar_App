@@ -39,6 +39,7 @@ User — user login info, hashed passwords, session data.
 - As someone who loves colors, I would like my calendar to NOT be bland, so my eyes don't bleed every time I look at it. :)
 - As someone who hates the apple calendar desktop app I would like a desktop focused application so I can finally diverge from the default app.
 - As a private person that’s worried about people seeing my schedule, I want a login button to maintain privacy.
+- As someone with bad vision, I want the information on my calendar app to be easily readable so that I do not have to strain my eyesight when making plans.
 - As a busy professional who’s schedule is always changing, I want to be able to delete, create, and delete my calendar to reflect my changing schedule.
 - As someone who doesn’t like to have to log into google drive just to view their calendar, I want an app where my calendar is the first thing that pops up so that I can get right down to business.
 - As an avid planner, I want to simultaneously see a monthly view while also being able to see details about a selected day’s events, so I can keep track of both and see them as a whole.
