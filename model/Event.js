@@ -7,12 +7,12 @@ Event.getAll = () => {
 }
 
 Event.findById = id => {
-  return db.one("SELECT * FROM events WHERE id = $1", [id])
+  return db.one("SELECT * FROM events WHERE event_id = $1", [id])
 }
 
 Event.create = newEvent => {
   return db.one(
-    "INSERT INTO events(name, date, description, type) VALUES($1, $2, $3, $4) RETURNING id",
+    "INSERT INTO events(name, date, description, type) VALUES($1, $2, $3, $4) RETURNING event_id",
     [
       newEvent.event_name,
       newEvent.event_time,
@@ -24,9 +24,9 @@ Event.create = newEvent => {
 
 Event.update = event => {
   return db.none(
-    "UPDATE events SET name = $1, time = $2, description = $3, type = $4 WHERE id = $5",
+    "UPDATE events SET name = $1, time = $2, description = $3, type = $4 WHERE event_id = $5",
     [
-      event.eventsName,
+      event.event_name,
       event.events_time,
       event.event_description,
       event.event_type
@@ -35,7 +35,7 @@ Event.update = event => {
 }
 
 Event.delete = id => {
-  return db.result("DELETE FROM events WHERE id = $1", [id])
+  return db.result("DELETE FROM events WHERE event_id = $1", [id])
 }
 
 module.exports = Event
