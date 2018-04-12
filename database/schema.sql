@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE calendar_db;
 
 \c calendar_db;
