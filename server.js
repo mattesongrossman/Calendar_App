@@ -28,7 +28,13 @@ const jsonParser = bodyParser.json();
 
 
 // Get one event from one user's events
-
+app.get('/api/event/:id', (request, response) => {
+  const eventId = request.params.id;
+  Event.findById(eventId)
+    .then(eventInfo => {
+      response.json(eventInfo);
+    })
+})
 
 // Create an event
 app.post('/api/create', jsonParser, (request, response) => {
