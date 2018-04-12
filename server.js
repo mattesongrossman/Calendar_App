@@ -27,6 +27,7 @@ const jsonParser = bodyParser.json();
 // Get all events for one user
 
 
+
 // Get one event from one user's events
 app.get('/api/event/:id', (request, response) => {
   const eventId = request.params.id;
