@@ -20,15 +20,14 @@ class EditEvent extends Component {
       created: false,
       edited: false
     }
-    this.updateEvent = this.updateEvent.bind(this)
+    this.editEvent = this.editEvent.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
   }
 
   componentDidMount() {
     const id = Number(this.props.match.params.id)
-    console.log(id)
-    fetch(`http://localhost:4567/api/event/1`)
+    fetch(`http://localhost:4567/api/event/${id}`)
       .then(response => response.json())
       .then(event => {
         const {
@@ -63,18 +62,19 @@ class EditEvent extends Component {
     })
   }
 
-  updateEvent(evt) {
+  editEvent(evt) {
     evt.preventDefault()
 
     const { name, time, description, type } = this.state.editEvent
-    const id = this.props.match.params
+    const id = Number(this.props.match.params.id)
     const body = {
       name: name,
       time: time,
       description: description,
-      type: type
+      type: type,
+      id: id
     }
-    fetch(`http://localhost:4567/api/record/1`, {
+    fetch(`http://localhost:4567/api/event/${id}`, {
       method: "PUT",
       body: JSON.stringify(body),
       headers: {
@@ -89,10 +89,10 @@ class EditEvent extends Component {
 
   deleteEvent(evt) {
     evt.preventDefault()
-    const id = this.props.match.params
-    fetch(`http://localhost:4567/api/event/1`, { method: "DELETE" })
+    const id = Number(this.props.match.params.id)
+    fetch(`http://localhost:4567/api/event/${id}`, { method: "DELETE" })
       .then(response => response.json())
-      .then(responseJSON => {
+      .then(response => {
         this.setState({
           edited: true
         })
@@ -102,13 +102,19 @@ class EditEvent extends Component {
   render() {
     const { name, time, description, type } = this.state.editEvent
 
+    const { edited } = this.state
+
+    if (edited) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div>
         <h3>Edit</h3>
         <form
           id="edit"
           onChange={this.handleInputChange}
-          onSubmit={this.updateEvent}>
+          onSubmit={this.editEvent}>
           <div className="form-group">
             <label>
               Event Name:

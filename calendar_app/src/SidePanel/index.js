@@ -9,7 +9,7 @@ class SidePanel extends Component {
     return (
       <Router>
         <div className="container">
-          <Route path="/event/edit" component={EditEvent} />
+          <Route path="/event/edit/:id" component={EditEvent} />
           <Route path="/event/new" component={AddEvent} />
           <Route path="/event/detail" component={DayDetail} />
         </div>
