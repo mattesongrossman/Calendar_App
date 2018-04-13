@@ -11,11 +11,10 @@ class AddEvent extends Component {
     super(props)
     this.state = {
       newEvent: {
-        user_id: 1,
-        event_name: "",
-        event_time: "",
-        event_description: "",
-        event_type: ""
+        name: "",
+        time: "",
+        description: "",
+        type: ""
       },
       created: false
     }
@@ -41,19 +40,12 @@ class AddEvent extends Component {
 
   createEvent(evt) {
     evt.preventDefault()
-    const {
-      user_id,
-      event_name,
-      event_time,
-      event_description,
-      event_type
-    } = this.state.newEvent
+    const { name, time, description, type } = this.state.newEvent
     const body = {
-      user_id: user_id,
-      event_name: event_name,
-      event_time: event_time,
-      event_description: event_description,
-      event_type: event_type
+      name: name,
+      time: time,
+      description: description,
+      type: type
     }
     fetch(`http://localhost:4567/api/create`, {
       method: "POST",
@@ -69,13 +61,7 @@ class AddEvent extends Component {
   }
 
   render() {
-    const {
-      user_id,
-      event_name,
-      event_time,
-      event_description,
-      event_type
-    } = this.state.newEvent
+    const { name, time, description, type } = this.state.newEvent
 
     const { created } = this.state
 
@@ -95,9 +81,9 @@ class AddEvent extends Component {
               Event Name:
               <input
                 type="text"
-                value={event_name}
+                value={name}
                 className="form-control"
-                name="event_name"
+                name="name"
               />
             </label>
           </div>
@@ -107,29 +93,25 @@ class AddEvent extends Component {
               Date:
               <input
                 type="datetime-local"
-                value={event_time}
+                value={time}
                 className="form-control"
-                name="event_time"
+                name="time"
               />
             </label>
           </div>
           <div className="form-group">
             <label>Description: </label>
             <br />
-            <textarea
-              name="event_description"
-              form="add"
-              value={event_description}
-            />
+            <textarea name="description" form="add" value={description} />
           </div>
           <div className="form-group">
             <label>
               Type:
               <input
                 type="text"
-                value={event_type}
+                value={type}
                 className="form-control"
-                name="event_type"
+                name="type"
               />
             </label>
           </div>
