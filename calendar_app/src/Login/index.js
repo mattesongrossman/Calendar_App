@@ -10,73 +10,53 @@
 // <form>
 import import React, { Component } from "react"
 import Register from "../Register"
-import NavBar from "../NaVBar"
+import NavBar from "../NavBar"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class Login extends Component {
  constructor(props) {
     super(props)
-    this.state = {
+    render{
+      return(
  <{NavBar}>
 <h1> Login! </h1>
 
-
-
-
-
-
-
-
-
-//       },
-      created: false
-    }
-    this.User = this.User.bind(this)
-    this.verifyPassword = this.verifyPassword.bind(this)
-
-
-  componentDidMount() {}
-
-  User(evt) {
+userLoggingIn(evt) {
     //selects the name of the input field
-    const username = evt.target.name
+    const username = evt.target.username.value
     //selects the value of the input field
-    const password = evt.target.value
-
-      return {
-        User: User
-      }
-    }
-  }
-
-render{
+    const password = evt.target.password.value
+  };
 
 
-  <form onSubmit={this.User}>
-        <label>Name
-          <input class = "username">
-            type="text"
-            name="username" }
-            value={this.state.username} />
-        </ input>
-        </label>
-        <label>Password
-          <input>
-            type="password"
+      <form>
+          <input type="text"
+            name="username"
+            placeholder = "username"
+            value= {this.state.username}
+            />
+             <input  type="text"
             name="password"
-            value={this.state.password} />
-        </label>
-        < button type="submit" value="Submit">. Submit </button>
-      <h2>Already have an account? </h2>
- < Register Route path="/event/register" component={Register} />
+            value={this.state.password}
+             />
 
-      </form>
 
-};
+
+
+        <button type= "submit"> Welcome Back! </button>
+      <h2> Don't have an account? </h2>
+      <Link to="/Register"> <button> Register! </button> </Link>
+      </h2>
+
+
+
+</form>
+);
+}
+}
 
 
 export default Login
 
-// https://git.generalassemb.ly/wdi-nyc-ewok/auth_react/blob/master/client/src/components/UserForm.js
 
 
