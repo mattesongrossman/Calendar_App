@@ -1,73 +1,46 @@
-import import React, { Component } from "react"
+import React, { Component } from "react"
 import Login from "../Login"
-import NavBar from "../NaVBar"
+// import NavBar from "../NaVBar"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
-
 class Register extends Component {
- constructor(props) {
-    super(props)
-    this.state = {
- <{NavBar}>
-<h1> Register as a New User! </h1>
-    username: '',
-      password: ''
-
-
-
-
-
-
-
-
-//       },
-      created: false
-    }
-    this.createUser = this.createUser.bind(this)
-
-  }
-
-  componentDidMount() {}
-
-  newUser(evt) {
+ constructor(props)  {
+    super(props); }
+  makingNewUser(evt) {
     //selects the name of the input field
-    const username = evt.target.name
+    const username = evt.target.value;
     //selects the value of the input field
-    const password = evt.target.value
+    const password = evt.target.value;
   };
-    this.setState((prevState, props) => {
-      const newEvent = Object.assign({}, prevState.newEvent)
-      NewUser[property] = value
-      return {
-        newUser: newUser
-      }
-    })
-  }
+ render(){
+  return(
+  <div>
 
+<h1> Register as a New User! </h1>
 
-
-
-  <form onSubmit={this.newUser}>
-        <label>
-          <input>
-            type="text"
-            name="username"
-            value={this.state.username} <input/>
-             <input>
-            type="text"
+<form>
+          <input type="text"
+            name = "username"
+            placeholder = "username"
+            value={this.state.username}>
+             </input>
+             <input  type="text"
             name="password"
-            value={this.state.password} <input/>
+            value={this.state.password}>
+             placeholder = "password"
+             /> </input>
 
 
-        </label>
+
+//inner html is join us, button puts users information in database
+        <button type= "submit"> Join Us! </button>
 
 
-        <button type="submit" value="Submit" onClick= onSubmit> Submit </button>
-      <h2>Already have an account? </h2>
- <button>< Login Route path= "/event/login" component={Login} /> </button>
-
-      </form>
-
+</form>
+</div>
+);
+}
+}
 
 
 export default Register
-// https://git.generalassemb.ly/wdi-nyc-ewok/auth_react/blob/master/client/src/components/UserForm.js
+
