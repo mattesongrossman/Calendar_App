@@ -1,41 +1,49 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import DaysOfWeek from '../DaysOfWeek';
-import Day from '../Day';
 import moment from 'moment';
+import Week from '../Week';
 
 class Month extends Component {
-  render() {
-    const startDay = moment().clone().startOf('month').startOf('week');
-    const endDay = moment().clone().endOf('month').endOf('week');
-    var calendar1 = [];
-    var index = startDay.clone();
-    while (index.isBefore(endDay, 'day')) {
-      calendar1.push(
-        new Array(7).fill(0).map(
-          function(n, i) {
-            return {date: index.add(1, 'day').date()};
-          }
-        )
-      )
+  constructor(props) {
+    super(props);
+    this.state = {
+      year: '',
+      month: []
     }
-    console.log(calendar1);
+    this.makeCalendar = this.makeCalendar.bind(this);
+  }
 
+  componentDidMount() {
+    this.makeCalendar();
+  }
+
+  makeCalendar() {
+    // Working with a solution found on stackoverflow: https://stackoverflow.com/questions/39786372/creating-a-custom-calendar-with-moment-using-days-weeks-and-headings
     const startWeek = moment().startOf('month').week();
     const endWeek = moment().endOf('month').week();
-    let calendar = []
-    for(var week = startWeek; week<endWeek;week++){
-      calendar.push({
-        week:week,
-        days:Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
+    let month = [];
+    for (var week = startWeek; week < endWeek; week++) {
+      month.push({
+        week: week,
+        days: Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
       })
     }
-    console.log(calendar);
+    // console.log(month);
+    this.setState({
+      month: month
+    })
+  }
+
+  render() {
+    console.log(this.state.month);
+    const weeks = this.state.month.map(week => {
+      return <Week key={week.week} weekInfo={week.days} />
+    })
 
     return (
       <div className="month">
-        <DaysOfWeek />
-        <Day />
+        <div className="weeks">
+          {weeks}
+        </div>
       </div>
     )
   }
