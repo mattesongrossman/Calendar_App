@@ -20,6 +20,36 @@ Event.findById = id => {
   )
 }
 
+Event.findByYear = year => {
+  return db.any(`
+    SELECT *
+    FROM events
+    WHERE EXTRACT(YEAR FROM event_time) = $1`,
+    [year]
+  )
+}
+
+Event.findByMonth = (year, month) => {
+  return db.any(`
+    SELECT *
+    FROM events
+    WHERE
+      EXTRACT(YEAR FROM event_time) = $1 AND EXTRACT(MONTH FROM event_time) = $2`,
+    [year, month]
+  )
+}
+
+Event.findByDay = (year, month, day) => {
+  return db.any(`
+    SELECT *
+    FROM events
+    WHERE
+      EXTRACT(YEAR FROM event_time) = $1 AND EXTRACT(MONTH FROM event_time) = $2 AND
+      EXTRACT(DAY FROM event_time) = $3`,
+    [year, month, day]
+  )
+}
+
 Event.create = newEvent => {
   return db.one(`
     INSERT INTO events (event_name, event_time, event_description, event_type)

@@ -23,13 +23,13 @@ const jsonParser = bodyParser.json()
 // Create new user
 
 // Get all events for one user (Need to modify to extract user or session id)
-app.get("/api/events", (request, response) => {
+app.get('/api/events', (request, response) => {
   Event.getAll().then(events => {
     response.json(events)
   })
 })
 
-// Get one event from one user's events
+// Get one event from a specific user
 app.get('/api/event/:id', (request, response) => {
   const eventId = request.params.id;
   Event.findById(eventId)
@@ -37,6 +37,37 @@ app.get('/api/event/:id', (request, response) => {
       response.json(eventInfo);
     })
 })
+
+// Get all events from a specific year from a specific user
+app.get('/api/events/:year', (request, response) => {
+  const year = request.params.year;
+  Event.findByYear(year)
+    .then(eventInfo => {
+      response.json(eventInfo);
+    })
+})
+
+// Get all events from a specific month from a specific user
+app.get('/api/events/:year/:month', (request, response) => {
+  const year = request.params.year;
+  const month = request.params.month;
+  Event.findByMonth(year, month)
+    .then(eventInfo => {
+      response.json(eventInfo);
+    })
+})
+
+// Get all events from a specific date from a specific user
+app.get('/api/events/:year/:month/:day', (request, response) => {
+  const year = request.params.year;
+  const month = request.params.month;
+  const day = request.params.day;
+  Event.findByDay(year, month, day)
+    .then(eventInfo => {
+      response.json(eventInfo);
+    })
+})
+
 
 // Create an event
 app.post('/api/create', jsonParser, (request, response) => {
@@ -59,7 +90,7 @@ app.put('/api/edit/:id', jsonParser, (request, response) => {
 })
 
 // Delete an event
-app.delete("/api/event/:id", (request, response) => {
+app.delete('/api/event/:id', (request, response) => {
   const eventId = request.params.id
   Event.findById(eventId)
     .then(event => {
