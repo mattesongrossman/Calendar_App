@@ -17,7 +17,7 @@ class EditEvent extends Component {
         description: "",
         type: ""
       },
-      created: false,
+      deleted: false,
       edited: false
     }
     this.editEvent = this.editEvent.bind(this)
@@ -90,11 +90,12 @@ class EditEvent extends Component {
   deleteEvent(evt) {
     evt.preventDefault()
     const id = Number(this.props.match.params.id)
+    console.log("hi")
     fetch(`http://localhost:4567/api/event/${id}`, { method: "DELETE" })
       .then(response => response.json())
       .then(response => {
         this.setState({
-          edited: true
+          deleted: true
         })
       })
   }
@@ -103,8 +104,12 @@ class EditEvent extends Component {
     const { name, time, description, type } = this.state.editEvent
 
     const { edited } = this.state
+    const { deleted } = this.state
 
     if (edited) {
+      return <Redirect to="/" />
+    }
+    if (deleted) {
       return <Redirect to="/" />
     }
 
@@ -115,59 +120,56 @@ class EditEvent extends Component {
           id="edit"
           onChange={this.handleInputChange}
           onSubmit={this.editEvent}>
-          <div className="form-group">
+          <div className="">
             <label>
               Event Name:
               <input
                 type="text"
                 value={name}
-                className="form-control"
+                className=""
                 placeholder="Enter event name"
                 name="name"
               />
             </label>
           </div>
-          <div className="form-group" />
-          <div className="form-group">
+          <div className="" />
+          <div className="">
             <label>
               Date:
               <input
                 type="datetime-local"
                 value={time}
-                className="form-control"
+                className=""
                 placeholder="Enter time"
                 name="time"
               />
             </label>
           </div>
-          <div className="form-group">
+          <div className="">
             <label>Description: </label>
             <br />
             <textarea name="edit" form="edit" value={description} />
           </div>
-          <div className="form-group">
+          <div className="">
             <label>
               Type:
               <input
                 type="text"
                 value={type}
-                className="form-control"
+                className=""
                 placeholder="Enter type"
                 name="type"
               />
             </label>
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+          <div className="">
+            <button type="submit" className="">
               Submit
             </button>
           </div>
         </form>
-        <form className="form-group">
-          <button
-            type="submit"
-            className="btn btn-danger"
-            onSubmit={this.deleteEvent}>
+        <form className="" onSubmit={this.deleteEvent}>
+          <button type="submit" className="">
             Delete
           </button>
         </form>
