@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import moment from 'moment';
 
 class Day extends Component {
   render() {
+    console.log('this is dayinfo', this.props.dayInfo);
     return (
       <div className="day">
-        <h2>13</h2>
+        <h2>{moment(this.props.dayInfo).format('DD')}</h2>
       </div>
     )
   }
