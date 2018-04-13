@@ -5,7 +5,7 @@ import Login from './Login';
 import Register from './Register';
 // import NavBar from './NavBar';
 import Calendar from './Calendar';
-// import SidePanel from './SidePanel';
+import SidePanel from './SidePanel';
 
 class App extends Component {
   render() {
@@ -16,7 +16,7 @@ class App extends Component {
           <div className="view-window">
             {/* <NavBar /> */}
             <Calendar />
-            {/* <SidePanel /> */}
+            <Route path="/event" component={SidePanel} />
           </div>
         </div>
       </Router>
@@ -24,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
