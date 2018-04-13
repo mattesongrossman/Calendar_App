@@ -3,6 +3,7 @@ const db = require("../database/db-connection")
 const Event = {}
 
 
+// Will add user/session id part later
 Event.getAll = () => {
   return db.any(`
     SELECT *
@@ -14,7 +15,7 @@ Event.findById = id => {
   return db.one(`
     SELECT *
     FROM events
-    WHERE event_id = $1`,
+    WHERE id = $1`,
     [id]
   )
 }
@@ -23,7 +24,7 @@ Event.create = newEvent => {
   return db.one(`
     INSERT INTO events (event_name, event_time, event_description, event_type)
     VALUES ($1, $2, $3, $4)
-    RETURNING event_id`,
+    RETURNING id`,
     [
       newEvent.name,
       newEvent.time,
@@ -37,7 +38,7 @@ Event.update = event => {
   return db.none(`
     UPDATE events
     SET event_name = $1, event_time = $2, event_description = $3, event_type = $4
-    WHERE event_id = $5`,
+    WHERE id = $5`,
     [
       event.name,
       event.time,
@@ -50,7 +51,7 @@ Event.update = event => {
 Event.delete = id => {
   return db.result(`
     DELETE FROM events
-    WHERE event_id = $1`,
+    WHERE id = $1`,
     [id]
   )
 }
