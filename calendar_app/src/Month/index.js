@@ -1,41 +1,50 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import DaysOfWeek from '../DaysOfWeek';
-import Day from '../Day';
+import Week from '../Week';
 import moment from 'moment';
 
 class Month extends Component {
-  render() {
-    const startDay = moment().clone().startOf('month').startOf('week');
-    const endDay = moment().clone().endOf('month').endOf('week');
-    var calendar1 = [];
-    var index = startDay.clone();
-    while (index.isBefore(endDay, 'day')) {
-      calendar1.push(
-        new Array(7).fill(0).map(
-          function(n, i) {
-            return {date: index.add(1, 'day').date()};
-          }
-        )
-      )
+  constructor(props) {
+    super(props);
+    this.state = {
+      calendar: []
     }
-    console.log(calendar1);
+    this.makeCalendar = this.makeCalendar.bind(this);
+  }
 
+  componentDidMount() {
+    this.makeCalendar();
+  }
+
+  makeCalendar() {
+    // Working with a solution found on stackoverflow: https://stackoverflow.com/questions/39786372/creating-a-custom-calendar-with-moment-using-days-weeks-and-headings
     const startWeek = moment().startOf('month').week();
     const endWeek = moment().endOf('month').week();
-    let calendar = []
-    for(var week = startWeek; week<endWeek;week++){
+    let calendar = [];
+    for (var week = startWeek; week < endWeek; week++) {
       calendar.push({
-        week:week,
-        days:Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
+        week: week,
+        days: Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
       })
     }
-    console.log(calendar);
+    // console.log(calendar);
+    this.setState({
+      calendar: calendar
+    })
+  }
+
+  render() {
+    console.log(this.state.calendar);
+    const month = this.state.calendar.map(weeks => {
+      return weeks.days.map(week => {
+        return week._d
+      })
+    })
+    // month is an array of arrays
+    console.log(month);
 
     return (
       <div className="month">
-        <DaysOfWeek />
-        <Day />
+        <Week />
       </div>
     )
   }
