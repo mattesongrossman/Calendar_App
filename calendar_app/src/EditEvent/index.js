@@ -21,7 +21,7 @@ class EditEvent extends Component {
         <form id="edit">
           <div className="form-group">
             <label>
-              Event Name
+              Event Name:
               <input
                 type="text"
                 value=""
@@ -34,7 +34,7 @@ class EditEvent extends Component {
           <div className="form-group" />
           <div className="form-group">
             <label>
-              Date
+              Date:
               <input
                 type="datetime-local"
                 value=""
@@ -45,11 +45,23 @@ class EditEvent extends Component {
             </label>
           </div>
           <div className="form-group">
-            <label>Description</label>
+            <label>Description: </label>
             <br />
             <textarea name="edit" form="edit">
               Enter text here...
             </textarea>
+          </div>
+          <div className="form-group">
+            <label>
+              Type:
+              <input
+                type="text"
+                value=""
+                className="form-control"
+                placeholder="Enter type"
+                name="type"
+              />
+            </label>
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
