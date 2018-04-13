@@ -5,7 +5,7 @@ class Day extends Component {
   render() {
     return (
       <div className="day">
-        <h2>1</h2>
+        <h2>13</h2>
       </div>
     )
   }
