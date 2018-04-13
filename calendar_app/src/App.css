@@ -3,20 +3,23 @@
 }
 
 .days-of-week {
+  width: 815px;
   display: flex;
   justify-content: space-around;
 }
 
-.day h2 {
+.calendar h2 {
   margin: 0;
-  padding: 5px 62px 62px 5px;
+  padding: 15px;
 }
 
 .week {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .day {
   border: 1px solid black;
+  width: 115px;
+  height: 115px;
 }
