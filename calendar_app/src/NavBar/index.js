@@ -10,9 +10,8 @@ class NavBar extends Component {
     super(props);
   }
 
-  render {
-    return(
-  <Router>
+  render() {
+   return(
       //heading is standard html
       <nav>
         <h1> Calendar App </h1>
@@ -21,7 +20,6 @@ class NavBar extends Component {
            //make a link to the login page
       <Link to="/Login"> Login! </Link>
      </nav>
-</Router>
 );
 }
 }
