@@ -76,47 +76,37 @@ class AddEvent extends Component {
           id="add"
           onChange={this.handleInputChange}
           onSubmit={this.createEvent}>
-          <div className="form-group">
+          <div className="">
             <label>
               Event Name:
-              <input
-                type="text"
-                value={name}
-                className="form-control"
-                name="name"
-              />
+              <input type="text" value={name} className="" name="name" />
             </label>
           </div>
-          <div className="form-group" />
-          <div className="form-group">
+          <div className="" />
+          <div className="">
             <label>
               Date:
               <input
                 type="datetime-local"
                 value={time}
-                className="form-control"
+                className=""
                 name="time"
               />
             </label>
           </div>
-          <div className="form-group">
+          <div className="">
             <label>Description: </label>
             <br />
             <textarea name="description" form="add" value={description} />
           </div>
-          <div className="form-group">
+          <div className="">
             <label>
               Type:
-              <input
-                type="text"
-                value={type}
-                className="form-control"
-                name="type"
-              />
+              <input type="text" value={type} className="" name="type" />
             </label>
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+          <div className="">
+            <button type="submit" className="">
               Submit
             </button>
           </div>
