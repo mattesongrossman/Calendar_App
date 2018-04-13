@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Month from '../Month';
 import DaysOfWeek from '../DaysOfWeek';
+import Month from '../Month';
 
 class Calendar extends Component {
   render() {
     return (
       <div className="calendar">
-        <Month />
         <DaysOfWeek />
+        <Month />
       </div>
     )
   }

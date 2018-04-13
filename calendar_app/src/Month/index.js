@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Week from '../Week';
 import moment from 'moment';
+import Week from '../Week';
 
 class Month extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      calendar: []
+      year: '',
+      month: []
     }
     this.makeCalendar = this.makeCalendar.bind(this);
   }
@@ -19,32 +20,30 @@ class Month extends Component {
     // Working with a solution found on stackoverflow: https://stackoverflow.com/questions/39786372/creating-a-custom-calendar-with-moment-using-days-weeks-and-headings
     const startWeek = moment().startOf('month').week();
     const endWeek = moment().endOf('month').week();
-    let calendar = [];
+    let month = [];
     for (var week = startWeek; week < endWeek; week++) {
-      calendar.push({
+      month.push({
         week: week,
         days: Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
       })
     }
-    // console.log(calendar);
+    // console.log(month);
     this.setState({
-      calendar: calendar
+      month: month
     })
   }
 
   render() {
-    console.log(this.state.calendar);
-    const month = this.state.calendar.map(weeks => {
-      return weeks.days.map(week => {
-        return week._d
-      })
+    console.log(this.state.month);
+    const weeks = this.state.month.map(week => {
+      return <Week key={week.week} weekInfo={week.days} />
     })
-    // month is an array of arrays
-    console.log(month);
 
     return (
       <div className="month">
-        <Week />
+        <div className="weeks">
+          {weeks}
+        </div>
       </div>
     )
   }

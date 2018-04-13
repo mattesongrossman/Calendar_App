@@ -4,9 +4,19 @@
 
 .days-of-week {
   display: flex;
+  justify-content: space-around;
 }
 
-.calendar h2 {
+.day h2 {
   margin: 0;
-  padding: 10px 20px;
+  padding: 5px 62px 62px 5px;
+}
+
+.week {
+  display: flex;
+  justify-content: space-around;
+}
+
+.day {
+  border: 1px solid black;
 }
