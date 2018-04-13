@@ -6,7 +6,7 @@ const User = {};
 // Might have to incorporate session_id at somepoint
 User.create = (newUsername, hashedPassword) => {
   return db.one(`
-    INSERT INTO user_info (username, password)
+    INSERT INTO users (username, password)
     VALUES ($1, $2)
     RETURNING id`,
     [newUsername, hashedPassword]
@@ -16,7 +16,7 @@ User.create = (newUsername, hashedPassword) => {
 User.find = enteredUsername => {
   return db.one(`
     SELECT *
-    FROM user_info
+    FROM users
     WHERE username = $1`,
     [enteredUsername]
   )
