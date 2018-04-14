@@ -12,7 +12,6 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <h1 className="app-header">CALENDAR</h1>
           <div className="view-window">
             <NavBar />
             <Calendar />
