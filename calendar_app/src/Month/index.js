@@ -7,7 +7,8 @@ class Month extends Component {
     super(props);
     this.state = {
       year: '',
-      month: []
+      month: '',
+      weeks: []
     }
     // this.makeCalendar = this.makeCalendar.bind(this);
   }
@@ -16,85 +17,100 @@ class Month extends Component {
     // this.makeCalendar();
   }
 
+  // // Maybe make into a function accept a year and a month and return a weeks array
   // makeCalendar() {
-  //   // Working with a solution found on stackoverflow: https://stackoverflow.com/questions/39786372/creating-a-custom-calendar-with-moment-using-days-weeks-and-headings
-  //   const startWeek = moment().startOf('month').week();
-  //   const endWeek = moment().endOf('month').week();
-  //   let month = [];
-  //   for (var week = startWeek; week < endWeek; week++) {
-  //     month.push({
-  //       week: week,
-  //       days: Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
-  //     })
+  //   // Create an empty array of weeks
+  //   let weeks = [];
+  //   // Create a single week array which will contain days
+  //   let week = [];
+  //
+  //   const startDate = moment().clone().startOf('month').startOf('week');
+  //   const endDate = moment().clone().endOf('month').endOf('week');
+  //   // End of the last week of the month will be in the next month, so there's a couple extra days...
+  //
+  //   // Iterate through each numeric day of the month
+  //   while (startDate.isBefore(endDate)) {
+  //     // Push the days into the week array
+  //     week.push(startDate.format('YYYY-MM-DD'));
+  //     // If the day is Saturday, push the current week array into the weeks array and clear the week array
+  //     if (startDate.format('dddd') === 'Saturday') {
+  //       weeks.push(week);
+  //       week = [];
+  //     }
+  //     // Add a day to the start day
+  //     startDate.add(1, 'days');
   //   }
-  //   // console.log(month);
+  //   console.log('weeks:', weeks);
   //   this.setState({
-  //     month: month
+  //     months: weeks
   //   })
   // }
 
-  // makeCalendar() {
-  //   const startOfMonth = moment().startOf('month');
-  //   const endOfMonth   = moment().endOf('month');
-  //   let month = [];
-  // }
-
   render() {
-    // console.log(this.state.month);
-    // const weeks = this.state.month.map(week => {
-    //   return <Week key={week.week} weekInfo={week.days} />
-    // })
+    // Create an empty array of weeks
+    let weeks = [];
+    // Create a single week array which will contain days
+    let week = [];
 
-    // 1 31
-    // Create an empty array of weeks.
-    // Create a single week array which will contain days.
-    // Iterate through each numeric day of the month.
-    // If the day of the week is not Sunday, add the day into the week.
-    // if it is, put the current week array into the weeks array.
+    const startDate = moment().clone().startOf('month').startOf('week');
+    const endDate = moment().clone().endOf('month').endOf('week');
+    // End of the last week of the month will be in the next month, so there's a couple extra days...
+
+    // Iterate through each numeric day of the month
+    while (startDate.isBefore(endDate)) {
+      // Push the days into the week array
+      week.push(startDate.format('YYYY-MM-DD'));
+      // If the day is Saturday, push the current week array into the weeks array and clear the week array
+      if (startDate.format('dddd') === 'Saturday') {
+        weeks.push(week);
+        week = [];
+      }
+      // Add a day to the start day
+      startDate.add(1, 'days');
+    }
+    console.log('weeks:', weeks);
+
+    const week1Elements = weeks[0].map(week => {
+      const splitDate = week.split('-');
+      return <div key={splitDate[2]} className="day"><h2>{splitDate[2]}</h2></div>
+    })
+
+    const week2Elements = weeks[1].map(week => {
+      const splitDate = week.split('-');
+      return <div key={splitDate[2]} className="day"><h2>{splitDate[2]}</h2></div>
+    })
+
+    const week3Elements = weeks[2].map(week => {
+      const splitDate = week.split('-');
+      return <div key={splitDate[2]} className="day"><h2>{splitDate[2]}</h2></div>
+    })
+
+    const week4Elements = weeks[3].map(week => {
+      const splitDate = week.split('-');
+      return <div key={splitDate[2]} className="day"><h2>{splitDate[2]}</h2></div>
+    })
+
+    const week5Elements = weeks[4].map(week => {
+      const splitDate = week.split('-');
+      return <div key={splitDate[2]} className="day"><h2>{splitDate[2]}</h2></div>
+    })
 
     return (
       <div className="month">
         <div className="week">
-          <div className="day"><h2>1</h2></div>
-          <div className="day"><h2>2</h2></div>
-          <div className="day"><h2>3</h2></div>
-          <div className="day"><h2>4</h2></div>
-          <div className="day"><h2>5</h2></div>
-          <div className="day"><h2>6</h2></div>
-          <div className="day"><h2>7</h2></div>
+          {week1Elements}
         </div>
         <div className="week">
-          <div className="day"><h2>8</h2></div>
-          <div className="day"><h2>9</h2></div>
-          <div className="day"><h2>10</h2></div>
-          <div className="day"><h2>11</h2></div>
-          <div className="day"><h2>12</h2></div>
-          <div className="day"><h2>13</h2></div>
-          <div className="day"><h2>14</h2></div>
+          {week2Elements}
         </div>
         <div className="week">
-          <div className="day"><h2>15</h2></div>
-          <div className="day"><h2>16</h2></div>
-          <div className="day"><h2>17</h2></div>
-          <div className="day"><h2>18</h2></div>
-          <div className="day"><h2>19</h2></div>
-          <div className="day"><h2>19</h2></div>
-          <div className="day"><h2>20</h2></div>
+          {week3Elements}
         </div>
         <div className="week">
-          <div className="day"><h2>21</h2></div>
-          <div className="day"><h2>22</h2></div>
-          <div className="day"><h2>23</h2></div>
-          <div className="day"><h2>24</h2></div>
-          <div className="day"><h2>25</h2></div>
-          <div className="day"><h2>26</h2></div>
-          <div className="day"><h2>27</h2></div>
+          {week4Elements}
         </div>
         <div className="week">
-          <div className="day"><h2>28</h2></div>
-          <div className="day"><h2>29</h2></div>
-          <div className="day"><h2>30</h2></div>
-          <div className="day"><h2>31</h2></div>
+          {week5Elements}
         </div>
       </div>
     )
