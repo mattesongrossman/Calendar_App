@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
+const tokenService = require("./services/TokenService")
 
 // Require models
 const Event = require("./model/Event")
@@ -20,6 +21,13 @@ const jsonParser = bodyParser.json()
 // Get one user
 
 // Create new user
+
+app.post("/api/login", jsonParser, (request, response) => {
+  const newEvent = request.body
+  Event.create(newEvent).then(event => {
+    response.redirect(`/api/event/${event.id}`)
+  })
+})
 
 // Get all events for one user (Need to modify to extract user or session id)
 app.get("/api/events", (request, response) => {
