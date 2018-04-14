@@ -16,42 +16,63 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 class Login extends Component {
   constructor(props) {
     super(props) ;
+ this.onSubmit = this.onSubmit.bind(this);
+this.state = {
+      username: '',
+      password: ''
+    };
+this.handleChange = this.handleChange.bind(this);
+this.handleSubmit = this.handleSubmit.bind(this);
 }
-userLoggingIn(evt) {
-    //selects the name of the input field
+onSubmit(data) {
+    this.props.submit(data);
+  }
+ handleSubmit(e) {
+    e.preventDefault();
+    this.props.submit(this.state);
+  }
 
-    const username = evt.target.username.value
-    //selects the value of the input field
-    const password = evt.target.password.value;
+  // update form state
+  handleChange(e) {
+    const { name, value } = e.target
+    this.setState({
+      [name]: value
+    });
   }
 
    render() {
 
       return(
   <div>
- <NavBar/>
+  <NavBar> </NavBar>
 <h1> Login! </h1>
 
 
 
 
-      <form>
+      <form onSubmit = {this.handleSubmtit}>
+            <label>Name
           <input type="text"
             name="username"
             placeholder = "username"
             value= {this.state.username}
-            />
+            onChange={this.handleChange}/>
+
+            </label>
+
+
              <input  type= "text"
-            name= "password"
-            placeholder = "username"
-            value= {this.state.password}
-             />
+            name= "username"
+              placeholder = "username"
+            value= {this.state.username}
+            onChange={this.handleChange}
+                                 />
 
 
 
 
-        <button type= "submit">
-        </button>
+        <button type= "submit" value= "Submit"> Submit</button>
+
 
 
 
