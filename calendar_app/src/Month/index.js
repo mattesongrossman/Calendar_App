@@ -20,6 +20,7 @@ class Month extends Component {
 
   makeWeeks(year, month) {
     // Grab ^ year and month from url? Just passing a date in for now
+
     // Create an empty array of weeks
     let weeks = [];
     // Create a single week array which will contain days
@@ -42,6 +43,7 @@ class Month extends Component {
       startDate.add(1, 'days');
     }
     // console.log(weeks);
+
     this.setState({
       weeks: weeks,
       weeksLoaded: true
@@ -52,11 +54,12 @@ class Month extends Component {
     console.log(this.state.weeks);
 
     if (this.state.weeksLoaded === false) {
-      return <div className="month">Loading...</div>
+      return <div className="month loading">Loading...</div>
     }
 
     const weeks = this.state.weeks.map(week => {
       const weekNumber = moment(week[0]).week();
+      console.log(weekNumber);
       return <Week key={weekNumber} weekInfo={week} />
     })
 
