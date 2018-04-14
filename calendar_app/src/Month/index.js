@@ -7,42 +7,79 @@ class Month extends Component {
     super(props);
     this.state = {
       year: '',
-      month: []
+      month: '',
+      weeks: [],
+      weeksLoaded: false
     }
-    this.makeCalendar = this.makeCalendar.bind(this);
+    this.makeWeeks = this.makeWeeks.bind(this);
   }
 
   componentDidMount() {
-    this.makeCalendar();
+    this.makeWeeks('2018', '08');
   }
 
-  makeCalendar() {
-    // Working with a solution found on stackoverflow: https://stackoverflow.com/questions/39786372/creating-a-custom-calendar-with-moment-using-days-weeks-and-headings
-    const startWeek = moment().startOf('month').week();
-    const endWeek = moment().endOf('month').week();
-    let month = [];
-    for (var week = startWeek; week < endWeek; week++) {
-      month.push({
-        week: week,
-        days: Array(7).fill(0).map((n, i) => moment().week(week).startOf('week').clone().add(n + i, 'day'))
-      })
+  makeWeeks(year, month) {
+    // Grab ^ year and month from url? Just passing a date in for now
+    // Create an empty array of weeks
+    let weeks = [];
+    // Create a single week array which will contain days
+    let week = [];
+
+    const startDate = moment(`${year}-${month}`).clone().startOf('month').startOf('week');
+    const endDate = moment(`${year}-${month}`).clone().endOf('month').endOf('week');
+    // Need to figure out how to get rid of the extra days from previous and next month...
+
+    // Iterate through each numeric day of the month
+    while (startDate.isBefore(endDate)) {
+      // Push the days into the week array
+      week.push(startDate.format('YYYY-MM-DD'));
+      // If the day is Saturday, push the current week array into the weeks array and clear the week array
+      if (startDate.format('dddd') === 'Saturday') {
+        weeks.push(week);
+        week = [];
+      }
+      // Add a day to the start day
+      startDate.add(1, 'days');
     }
-    // console.log(month);
+    console.log('weeks in method:', weeks);
     this.setState({
-      month: month
+      weeks: weeks,
+      weeksLoaded: true
     })
   }
 
   render() {
-    console.log(this.state.month);
-    const weeks = this.state.month.map(week => {
-      return <Week key={week.week} weekInfo={week.days} />
+    const weeks = this.state.weeks;
+    console.log(weeks);
+
+    if (this.state.weeksLoaded === false) {
+      return <div className="month">Loading...</div>
+    }
+
+    const weekElements = weeks.map(week => {
+      return week.map(day => {
+        const splitDate = day.split('-');
+        return <div key={day} className="day"><h2>{splitDate[2]}</h2></div>
+      })
     })
+    console.log(weekElements);
 
     return (
       <div className="month">
-        <div className="weeks">
-          {weeks}
+        <div className="week">
+          {weekElements[0]}
+        </div>
+        <div className="week">
+          {weekElements[1]}
+        </div>
+        <div className="week">
+          {weekElements[2]}
+        </div>
+        <div className="week">
+          {weekElements[3]}
+        </div>
+        <div className="week">
+          {weekElements[4]}
         </div>
       </div>
     )
