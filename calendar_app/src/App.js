@@ -15,8 +15,10 @@ class App extends Component {
             <NavBar />
           <div className="view-window">
             <Calendar />
-            <Route exact path="/" component={SidePanel} />
+            <SidePanel />
           </div>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </div>
       </Router>
     )

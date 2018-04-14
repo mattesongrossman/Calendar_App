@@ -16,7 +16,7 @@ class NavBar extends Component {
         <h1 className="app-header">CALENDAR APP</h1>
         <div className="nav-links">
           {/* make a link to the add event page */}
-          <Link to="/create">
+          <Link to="/event/new">
             <p>Add an event</p>
           </Link>
           {/* make a link to the login page */}
