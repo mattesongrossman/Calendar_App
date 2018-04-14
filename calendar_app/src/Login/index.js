@@ -10,7 +10,6 @@
 // <form>
 import  React, { Component } from "react"
 import Register from "../Register"
-import NavBar from "../NavBar"
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class Login extends Component {
@@ -50,7 +49,7 @@ onSubmit(data) {
 
 
       <form onSubmit = {this.handleSubmtit}>
-            <label>Name
+            <label>Username
           <input type="text"
             name="username"
             placeholder = "username"
@@ -59,13 +58,14 @@ onSubmit(data) {
 
             </label>
 
-
+            <label> Passwrd
              <input  type= "text"
-            name= "username"
-              placeholder = "username"
-            value= {this.state.username}
+            name= "password"
+              placeholder = "password"
+            value= {this.state.password}
             onChange={this.handleChange}
                                  />
+            </label>
 
 
 
