@@ -17,6 +17,8 @@ class App extends Component {
             <Calendar />
             <SidePanel />
           </div>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </div>
       </Router>
     )

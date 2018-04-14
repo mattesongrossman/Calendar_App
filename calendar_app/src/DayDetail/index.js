@@ -11,7 +11,7 @@ class DayDetail extends Component {
   render() {
     return (
       <div class="DayDetail">
-        <h3>8:00pm</h3>
+        <h2>8:00pm</h2>
         <p>Isle of Dogs</p>
         <div className="form-group">
           <button type="submit" className="btn btn-primary">

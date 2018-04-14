@@ -8,7 +8,7 @@ class SidePanel extends Component {
   render() {
     return (
       <div className="side-panel">
-        <h2>Side Panel</h2>
+        {/* <h2>Side Panel</h2> */}
         <Route path="/event/edit/:id" component={EditEvent} />
         <Route path="/event/new" component={AddEvent} />
         <Route path="/event/detail" component={DayDetail} />

@@ -115,7 +115,7 @@ class EditEvent extends Component {
 
     return (
       <div>
-        <h3>Edit</h3>
+        <h2>Edit</h2>
         <form
           id="edit"
           onChange={this.handleInputChange}

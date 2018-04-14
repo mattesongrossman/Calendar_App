@@ -15,7 +15,7 @@ class Month extends Component {
   }
 
   componentDidMount() {
-    this.makeWeeks('2018', '08');
+    this.makeWeeks('2018', '04');
   }
 
   makeWeeks(year, month) {
@@ -51,7 +51,7 @@ class Month extends Component {
   }
 
   render() {
-    console.log(this.state.weeks);
+    // console.log(this.state.weeks);
 
     if (this.state.weeksLoaded === false) {
       return <div className="month loading">Loading...</div>
@@ -59,7 +59,7 @@ class Month extends Component {
 
     const weeks = this.state.weeks.map(week => {
       const weekNumber = moment(week[0]).week();
-      console.log(weekNumber);
+      // console.log(weekNumber);
       return <Week key={weekNumber} weekInfo={week} />
     })
 

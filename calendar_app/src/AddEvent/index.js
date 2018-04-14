@@ -71,7 +71,7 @@ class AddEvent extends Component {
 
     return (
       <div>
-        <h3>Add</h3>
+        <h2>Add</h2>
         <form
           id="add"
           onChange={this.handleInputChange}
