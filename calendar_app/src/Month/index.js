@@ -38,10 +38,10 @@ class Month extends Component {
         weeks.push(week);
         week = [];
       }
-      // Add a day to the start day
+      // Add a day to the start date
       startDate.add(1, 'days');
     }
-    console.log('weeks in method:', weeks);
+    // console.log(weeks);
     this.setState({
       weeks: weeks,
       weeksLoaded: true
@@ -49,38 +49,20 @@ class Month extends Component {
   }
 
   render() {
-    const weeks = this.state.weeks;
-    console.log(weeks);
+    console.log(this.state.weeks);
 
     if (this.state.weeksLoaded === false) {
       return <div className="month">Loading...</div>
     }
 
-    const weekElements = weeks.map(week => {
-      return week.map(day => {
-        const splitDate = day.split('-');
-        return <div key={day} className="day"><h2>{splitDate[2]}</h2></div>
-      })
+    const weeks = this.state.weeks.map(week => {
+      const weekNumber = moment(week[0]).week();
+      return <Week key={weekNumber} weekInfo={week} />
     })
-    console.log(weekElements);
 
     return (
       <div className="month">
-        <div className="week">
-          {weekElements[0]}
-        </div>
-        <div className="week">
-          {weekElements[1]}
-        </div>
-        <div className="week">
-          {weekElements[2]}
-        </div>
-        <div className="week">
-          {weekElements[3]}
-        </div>
-        <div className="week">
-          {weekElements[4]}
-        </div>
+        {weeks}
       </div>
     )
   }
