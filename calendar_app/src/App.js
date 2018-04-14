@@ -6,15 +6,12 @@ import Register from "./Register"
 import NavBar from "./NavBar"
 import Calendar from "./Calendar"
 import SidePanel from "./SidePanel"
-// import EditEvent from "./EditEvent";
 
 class App extends Component {
   render() {
     return (
       <Router>
-
         <div className="container">
-
             <NavBar />
           <div className="view-window">
             <Calendar />

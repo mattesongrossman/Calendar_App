@@ -44,7 +44,6 @@ onSubmit(data) {
 
       return(
   <div>
-  <NavBar> </NavBar>
 <h1> Login! </h1>
 
 
