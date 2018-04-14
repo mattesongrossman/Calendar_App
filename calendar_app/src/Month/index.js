@@ -65,6 +65,7 @@ class Month extends Component {
 
     return (
       <div className="month">
+        <h2 className="month-header"></h2>
         {weeks}
       </div>
     )

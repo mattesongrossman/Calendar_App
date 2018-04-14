@@ -12,11 +12,13 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <div className="view-window">
             <NavBar />
+          <div className="view-window">
             <Calendar />
-            <Route path="/event" component={SidePanel} />
+            <SidePanel />
           </div>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
         </div>
       </Router>
     )

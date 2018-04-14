@@ -1,5 +1,5 @@
 const db = require("../database/db-connection")
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const User = {}
 
 // Might have to incorporate session_id at somepoint
