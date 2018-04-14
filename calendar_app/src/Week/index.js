@@ -4,10 +4,10 @@ import Day from '../Day';
 
 class Week extends Component {
   render() {
-    console.log(this.props.weekInfo);
     const days = this.props.weekInfo.map(day => {
-      return <Day key={day._d} dayInfo={day._d} />
+      return <Day key={day} dayInfo={day} />
     })
+
     return (
       <div className="week">
         {days}

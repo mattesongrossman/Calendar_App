@@ -3,10 +3,12 @@ import moment from 'moment';
 
 class Day extends Component {
   render() {
-    console.log('this is dayinfo', this.props.dayInfo);
+    const splitDate = this.props.dayInfo.split('-');
+    // console.log(splitDate); // index 2 to get just the date
+
     return (
-      <div className="day">
-        <h2>{moment(this.props.dayInfo).format('DD')}</h2>
+      <div id={this.props.dayInfo} className="day">
+        <h2>{splitDate[2]}</h2>
       </div>
     )
   }
