@@ -14,7 +14,7 @@ class App extends Component {
         <div className="container">
           <h1 className="app-header">CALENDAR</h1>
           <div className="view-window">
-            <NavBar />
+          <Route component={NavBar}/>
             <Calendar />
             <Route path="/event" component={SidePanel} />
           </div>

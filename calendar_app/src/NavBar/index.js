@@ -13,13 +13,15 @@ class NavBar extends Component {
   render() {
    return(
       //heading is standard html
-      <nav>
+     <nav>
         <h1> Calendar App </h1>
         //make a link to the add event page
-        < Link to ="/AddEvent"> the plus sign thingy </Link>
+        < Route path ="/AddEvent" component = {AddEvent} />
            //make a link to the login page
-      <Link to="/Login"> Login! </Link>
-     </nav>
+      <Route path= "../Login"  component= {Login} />
+    </nav>
+
+
 );
 }
 }
