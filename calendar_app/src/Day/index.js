@@ -49,8 +49,7 @@ class Day extends Component {
     const splitDate = this.props.dayInfo.split('-');
     // console.log(splitDate); // index 2 to get just the date
 
-    console.log('events:', this.state.events);
-
+    // console.log('events:', this.state.events);
     const events = this.state.events.map(event => {
       return <p key={event.id} id={event.id}>{event.event_name}</p>
     })

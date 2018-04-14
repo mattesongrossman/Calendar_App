@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import DaysOfWeek from '../DaysOfWeek';
 import Week from '../Week';
 
 class Month extends Component {
@@ -63,9 +64,13 @@ class Month extends Component {
       return <Week key={weekNumber} weekInfo={week} />
     })
 
+    const currentMonth = moment(this.state.weeks[1][0], 'YYYY-MM-DD').format('MMMM');
+    console.log(currentMonth);
+
     return (
       <div className="month">
-        <h2 className="month-header"></h2>
+        <h2 className="month-header">{currentMonth}</h2>
+        <DaysOfWeek />
         {weeks}
       </div>
     )
