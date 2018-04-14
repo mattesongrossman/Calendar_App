@@ -9,11 +9,13 @@
 }
 
 .app-header {
-  height: 100%;
+  flex-grow: 1;
+}
+
+.app-header h1 {
   font-size: 30px;
   margin: 0;
   padding: 15px;
-  flex-grow: 1;
 }
 
 .nav-links {
@@ -26,6 +28,14 @@
 
 .navbar p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 

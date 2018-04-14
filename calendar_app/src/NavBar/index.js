@@ -13,7 +13,9 @@ class NavBar extends Component {
     return(
       // heading is standard html
       <nav className="navbar">
-        <h1 className="app-header">CALENDAR APP</h1>
+        <Link to="/" className="app-header">
+          <h1>CALENDAR APP</h1>
+        </Link>
         <div className="nav-links">
           {/* make a link to the add event page */}
           <Link to="/event/new">

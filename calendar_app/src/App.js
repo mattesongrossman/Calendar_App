@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-            <NavBar />
+          <NavBar />
           <div className="view-window">
             <Calendar />
             <SidePanel />

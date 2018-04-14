@@ -64,8 +64,8 @@ class Month extends Component {
       return <Week key={weekNumber} weekInfo={week} />
     })
 
+    // Grab the current month from one of the weeks
     const currentMonth = moment(this.state.weeks[1][0], 'YYYY-MM-DD').format('MMMM');
-    console.log(currentMonth);
 
     return (
       <div className="month">
