@@ -1,10 +1,46 @@
+
+
+.view-window {
+  display: flex;
+}
+
+
+/* Nav */
+.navbar {
+  display: flex;
+}
+
 .app-header {
   font-size: 30px;
   padding-left: 20px;
+  flex-grow: 1;
 }
 
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  padding: 20px;
+}
+
+
+/* Side Panel */
+.side-panel h2 {
+  margin-top: 0;
+}
+
+.side-panel {
+  border: 1px solid black;
+  padding: 5px 10px;
+  width: 100%;
+}
+
+
+/* Calendar */
 .days-of-week {
   width: 815px;
+  border: 1px solid black;
   display: flex;
   justify-content: space-around;
 }

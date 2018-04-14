@@ -12,10 +12,10 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <div className="view-window">
             <NavBar />
+          <div className="view-window">
             <Calendar />
-            <Route path="/event" component={SidePanel} />
+            <Route exact path="/" component={SidePanel} />
           </div>
         </div>
       </Router>

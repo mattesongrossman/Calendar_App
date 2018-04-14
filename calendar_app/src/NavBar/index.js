@@ -12,16 +12,18 @@ class NavBar extends Component {
   render() {
     return(
       // heading is standard html
-      <nav>
+      <nav className="navbar">
         <h1 className="app-header">CALENDAR APP</h1>
-        {/* make a link to the add event page */}
-        <Link to="/create">
-          <p>Add an event</p>
-        </Link>
-        {/* make a link to the login page */}
-        <Link to="/login">
-          <p>Login!</p>
-        </Link>
+        <div className="nav-links">
+          {/* make a link to the add event page */}
+          <Link to="/create">
+            <p>Add an event</p>
+          </Link>
+          {/* make a link to the login page */}
+          <Link to="/login">
+            <p>Login!</p>
+          </Link>
+        </div>
       </nav>
     )
   }
