@@ -66,14 +66,18 @@ class Day extends Component {
     if (this.props.dayInfo === today) {
       return (
         <div id={this.props.dayInfo} className="day today">
-          <h3>{splitDate[2]}</h3>
+          <Link to={`/events/${splitDate[2]}`}>
+            <h3>{splitDate[2]}</h3>
+          </Link>
           {events}
         </div>
       )
     }
     return (
       <div id={this.props.dayInfo} className="day">
-        <h3>{splitDate[2]}</h3>
+        <Link to={`/events/${splitDate[2]}`}>
+          <h3>{splitDate[2]}</h3>
+        </Link>
         {events}
       </div>
     )

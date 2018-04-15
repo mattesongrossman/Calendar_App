@@ -30,7 +30,7 @@ class EditEvent extends Component {
     fetch(`http://localhost:4567/api/event/${id}`)
       .then(response => response.json())
       .then(event => {
-        console.log('this is event by id:', event);
+        // console.log('this is event by id:', event);
         const {
           id,
           event_name,

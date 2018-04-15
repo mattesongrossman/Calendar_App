@@ -1,42 +1,49 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom"
+import { BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
+import moment from 'moment';
 
 class DayDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventInfo: [],
+      currentDay: 0,
+      events: [],
       deleted: false
     }
-    this.fetchEvent = this.fetchEvent.bind(this);
+    this.fetchDaysEvents = this.fetchDaysEvents.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchEvent();
-  }
-
   componentDidUpdate() {
-    const eventId = this.props.match.params.id;
-    if (eventId !== this.state.eventInfo.id) {
-      this.fetchEvent();
-    }
+    // This works, but keeps updating forever...
+    // const day = this.props.match.params.day;
+    // if (day !== this.state.currentDay) {
+    //   this.fetchDaysEvents();
+    // }
   }
 
-  fetchEvent() {
-    const eventId = this.props.match.params.id;
-    fetch(`http://localhost:4567/api/event/${eventId}`)
+  componentDidMount() {
+    this.fetchDaysEvents();
+  }
+
+  fetchDaysEvents() {
+    // Eventually want to implement a way to have the year, month, day, in the url but for now hard coding
+    const year = '2018';
+    const month = '04';
+    const day = this.props.match.params.day;
+    fetch(`http://localhost:4567/api/events/${year}/${month}/${day}`)
       .then(apiResponse => apiResponse.json())
       .then(eventInfo => {
         this.setState({
-          eventInfo: eventInfo
+          currentInfo: day,
+          events: eventInfo
         })
       })
   }
 
   deleteEvent(evt) {
     evt.preventDefault()
-    const eventId = this.props.match.params.id;
+    const eventId = evt.target.id;
     console.log(eventId);
     fetch(`http://localhost:4567/api/event/${eventId}`, {
       method: "DELETE"
@@ -48,30 +55,38 @@ class DayDetail extends Component {
   }
 
   render() {
-    console.log(this.state.eventInfo);
-    const eventInfo = this.state.eventInfo;
+    console.log('events:', this.state.events);
+    const events = this.state.events.map(event => {
+      // Convert the UTC time from the database into a more readable time
+      var dateTime = moment.utc(event.event_time).toDate();
+      const formattedDateTime = moment(dateTime).local().format('h:mm a');
 
-    if (this.state.deleted) {
-      return <Redirect to="/" />
-    }
-
-    return (
-      <div className="DayDetail">
-        <h3>{eventInfo.event_name}</h3>
-        <p>{eventInfo.event_time}</p>
-        <p>{eventInfo.event_description}</p>
-        <div className="form-group">
-          <Link to={`/event/edit/${eventInfo.id}`}>
+      return (
+        <div key={event.id} className="event">
+          <Link to={`/event/${event.id}`}>
+            <p>{formattedDateTime} ― {event.event_name}</p>
+          </Link>
+          <Link to={`/event/edit/${event.id}`}>
             <button type="submit" className="btn btn-primary">
               Edit
             </button>
           </Link>
-        </div>
-        <form className="form-group">
-          <button type="submit" className="btn btn-danger" onClick={this.deleteEvent}>
+          <button type="submit" className="btn btn-danger" id={event.id} onClick={this.deleteEvent}>
             Delete
           </button>
-        </form>
+        </div>
+      )
+    })
+
+    if (this.state.deleted) {
+      return <Redirect to={`/events/${this.props.match.params.day}`} />
+    }
+
+    // moment(dateTime).local().format('MMMM Do YYYY')
+    return (
+      <div id={this.props.dayInfo} className="day-detail">
+        <h3>{this.props.match.params.day}</h3>
+        {events}
       </div>
     )
   }
