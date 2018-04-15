@@ -32,7 +32,7 @@ class EditEvent extends Component {
       .then(event => {
         // console.log('this is event by id:', event);
         const {
-          id,
+          // id,
           event_name,
           event_time,
           event_description,

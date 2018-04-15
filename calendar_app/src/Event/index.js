@@ -56,12 +56,18 @@ class DayDetail extends Component {
     var dateTime = moment.utc(eventInfo.event_time).toDate();
     const formattedDateTime = moment(dateTime).local().format('MMMM Do YYYY, h:mm a');
 
+    // If you give moment an undefined time, it will output the current time
+    // So it'll print the current date/time event when we're not passing it anything
+    if (!eventInfo.event_time) {
+      return <div></div>
+    }
+
     if (this.state.deleted) {
       return <Redirect to="/" />
     }
 
     return (
-      <div className="event">
+      <div className="event-info">
         <h3>{eventInfo.event_name}</h3>
         <p>{formattedDateTime}</p>
         <p>{eventInfo.event_description}</p>

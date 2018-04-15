@@ -16,7 +16,7 @@ class DayDetail extends Component {
 
   componentDidUpdate() {
     const day = this.props.match.params.day;
-    console.log(day);
+    // console.log(day);
     // // This works, but keeps updating forever since this.state.currentDay is always 0...
     // if (day !== this.state.currentDay) {
     //   this.fetchDaysEvents();
@@ -64,7 +64,7 @@ class DayDetail extends Component {
   }
 
   render() {
-    console.log('events:', this.state.events);
+    // console.log('events:', this.state.events);
     const events = this.state.events.map(event => {
       // Convert the UTC time from the database into a more readable time
       var dateTime = moment.utc(event.event_time).toDate();

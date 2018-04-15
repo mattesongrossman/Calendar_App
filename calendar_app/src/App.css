@@ -68,16 +68,17 @@ a:hover {
 
 input {
   margin: 5px;
-  width: 200px;
+  width: 300px;
 }
 
 .name {
-  width: 155px;
+  width: 255px;
 }
 
 textarea {
   margin-left: 5px;
-  width: 238px;
+  width: 338px;
+  height: 40px;
 }
 
 
@@ -117,36 +118,35 @@ textarea {
   height: 115px;
 }
 
-/* .day:hover {
-  opacity: 0.8;
-  cursor: pointer;
-} */
-
 .day h3 {
   background-color: #D3D0CB;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   padding: 2px;
 }
 
 .calendar p {
-  color: #393E41;
   font-size: 14px;
   margin: 5px;
 }
 
-.calendar p:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.calendar h3 {
+.calendar h3,
+.calendar p,
+.event p {
   color: #393E41;
 }
 
-.calendar h3:hover {
+.calendar h3:hover,
+.calendar p:hover,
+.event p:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.today {
+.today h3 {
   background-color: #E7BB41;
+}
+
+.event p {
+  margin-bottom: 5px;
 }

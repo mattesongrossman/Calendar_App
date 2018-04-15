@@ -3,7 +3,7 @@ import EditEvent from "../EditEvent"
 import AddEvent from "../AddEvent"
 import Event from "../Event"
 import DayDetail from "../DayDetail"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 class SidePanel extends Component {
   render() {
