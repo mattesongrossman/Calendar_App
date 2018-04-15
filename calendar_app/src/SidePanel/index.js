@@ -11,7 +11,7 @@ class SidePanel extends Component {
         {/* <h2>Side Panel</h2> */}
         <Route path="/event/edit/:id" component={EditEvent} />
         <Route path="/event/new" component={AddEvent} />
-        <Route path="/event/detail" component={DayDetail} />
+        <Route path="/event/:id" component={DayDetail} />
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Day extends Component {
   constructor(props) {
@@ -51,12 +52,28 @@ class Day extends Component {
 
     // console.log('events:', this.state.events);
     const events = this.state.events.map(event => {
-      return <p key={event.id} id={event.id}>{event.event_name}</p>
+      return (
+        <Link to={`/event/${event.id}`} key={event.id}>
+          <p id={event.id}>{event.event_name}</p>
+        </Link>
+      )
     })
 
+    // Find today's date
+    const today = moment().format('YYYY-MM-DD');
+
+    // If this day is today, return a div with a className of today
+    if (this.props.dayInfo === today) {
+      return (
+        <div id={this.props.dayInfo} className="day today">
+          <h3>{splitDate[2]}</h3>
+          {events}
+        </div>
+      )
+    }
     return (
       <div id={this.props.dayInfo} className="day">
-        <h2>{splitDate[2]}</h2>
+        <h3>{splitDate[2]}</h3>
         {events}
       </div>
     )

@@ -71,15 +71,15 @@ class AddEvent extends Component {
 
     return (
       <div>
-        <h2>Add</h2>
+        <h3>Add an event</h3>
         <form
           id="add"
           onChange={this.handleInputChange}
           onSubmit={this.createEvent}>
           <div className="">
             <label>
-              Event Name:
-              <input type="text" value={name} className="" name="name" />
+              Event name:
+              <input type="text" value={name} className="add-name" name="name" />
             </label>
           </div>
           <div className="" />
@@ -89,7 +89,7 @@ class AddEvent extends Component {
               <input
                 type="datetime-local"
                 value={time}
-                className=""
+                className="add-time"
                 name="time"
               />
             </label>
@@ -97,12 +97,12 @@ class AddEvent extends Component {
           <div className="">
             <label>Description: </label>
             <br />
-            <textarea name="description" form="add" value={description} />
+            <textarea name="description" form="add" value={description} className="add-desc" />
           </div>
           <div className="">
             <label>
               Type:
-              <input type="text" value={type} className="" name="type" />
+              <input type="text" value={type} className="add-type" name="type" />
             </label>
           </div>
           <div className="">

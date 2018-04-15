@@ -1,3 +1,9 @@
+body, html {
+  font-family: "Avenir", "Helvetica", sans-serif;
+  background-color: #E7E5DF;
+  color: #393E41;
+}
+
 .view-window {
   display: flex;
 }
@@ -13,6 +19,7 @@
 }
 
 .app-header h1 {
+  color: #44BBA4;
   font-size: 30px;
   margin: 0;
   padding: 15px;
@@ -24,6 +31,7 @@
 
 .nav-links a {
   padding: 20px;
+  color: #44BBA4;
 }
 
 .navbar p {
@@ -40,14 +48,34 @@ a:hover {
 
 
 /* Side Panel */
-.side-panel h2 {
+.side-panel h3 {
   margin-top: 0;
 }
 
 .side-panel {
-  border: 1px solid black;
-  padding: 5px 10px;
+  border: 2px solid black;
+  border-left: 1px solid black;
+  padding: 10px 20px;
   width: 100%;
+}
+
+.side-panel label {
+  font-size: 14px;
+  margin: 5px;
+}
+
+input {
+  margin: 5px;
+  width: 200px;
+}
+
+.add-name {
+  width: 155px;
+}
+
+textarea {
+  margin-left: 5px;
+  width: 238px;
 }
 
 
@@ -55,6 +83,7 @@ a:hover {
 .month-header {
   text-align: center;
   border: 1px solid black;
+  border-top: 2px solid black;
 }
 
 .days-of-week {
@@ -64,9 +93,14 @@ a:hover {
   justify-content: space-around;
 }
 
-.calendar h2 {
+.calendar h2, .calendar h3 {
   margin: 0;
   padding: 5px;
+}
+
+.calendar {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .week {
@@ -80,7 +114,22 @@ a:hover {
   height: 115px;
 }
 
+/* .day:hover {
+  opacity: 0.8;
+  cursor: pointer;
+} */
+
 .calendar p {
+  color: #393E41;
   font-size: 14px;
   margin: 5px;
+}
+
+.calendar p:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.today {
+  background-color: #E7BB41;
 }
