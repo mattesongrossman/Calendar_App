@@ -71,18 +71,17 @@ class DayDetail extends Component {
         <h3>{eventInfo.event_name}</h3>
         <p>{formattedDateTime}</p>
         <p>{eventInfo.event_description}</p>
-        <div className="form-group">
+        {/* <p>Type: {eventInfo.event_type}</p> */}
+        <div className="buttons">
           <Link to={`/event/edit/${eventInfo.id}`}>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit">
               Edit
             </button>
           </Link>
-        </div>
-        <form className="form-group">
-          <button type="submit" className="btn btn-danger" onClick={this.deleteEvent}>
+          <button type="submit" onClick={this.deleteEvent}>
             Delete
           </button>
-        </form>
+        </div>
       </div>
     )
   }

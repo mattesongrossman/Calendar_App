@@ -57,28 +57,44 @@ a:hover {
 .side-panel {
   border: 2px solid black;
   border-left: 1px solid black;
-  padding: 10px 20px;
+  padding: 30px;
   width: 100%;
 }
 
 .side-panel label {
   font-size: 14px;
-  margin: 5px;
+  margin: 5px 0;
 }
 
 input {
-  margin: 5px;
-  width: 300px;
-}
-
-.name {
-  width: 255px;
+  margin: 5px 0;
+  width: 350px;
 }
 
 textarea {
-  margin-left: 5px;
-  width: 338px;
+  width: 350px;
   height: 40px;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+}
+
+.event-label {
+  flex-grow: 1;
+}
+
+.buttons button {
+  margin: 10px 5px 5px 0;
+}
+
+.day-detail,
+.event-info,
+.add-event,
+.edit-event {
+  width: 90%;
+  margin: 0 auto;
 }
 
 

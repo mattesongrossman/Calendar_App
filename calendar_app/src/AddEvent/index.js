@@ -70,7 +70,7 @@ class AddEvent extends Component {
     }
 
     return (
-      <div>
+      <div className="add-event">
         <h3>Add an event</h3>
         <form
           id="add"

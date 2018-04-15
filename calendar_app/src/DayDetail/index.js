@@ -6,8 +6,8 @@ class DayDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentDay: 0,
       events: [],
+      loaded: false,
       deleted: false
     }
     this.fetchDaysEvents = this.fetchDaysEvents.bind(this);
@@ -16,12 +16,6 @@ class DayDetail extends Component {
 
   componentDidUpdate() {
     const day = this.props.match.params.day;
-    // console.log(day);
-    // // This works, but keeps updating forever since this.state.currentDay is always 0...
-    // if (day !== this.state.currentDay) {
-    //   this.fetchDaysEvents();
-    // }
-
     // A little bit janky... grabbing the event_time of the first event on the selected day and taking the date and comparing it to the date in the url parameter
     // Only works for days that have events in them, otherwise it throws an error
     const dayInState = moment(this.state.events[0].event_time).format('YYYY-MM-DD').split('-')[2];
@@ -44,9 +38,10 @@ class DayDetail extends Component {
       .then(apiResponse => apiResponse.json())
       .then(eventInfo => {
         this.setState({
-          currentInfo: day,
-          events: eventInfo
+          events: eventInfo,
+          loaded: true
         })
+        console.log(eventInfo);
       })
   }
 
@@ -71,17 +66,19 @@ class DayDetail extends Component {
       const formattedDateTime = moment(dateTime).local().format('h:mm a');
       return (
         <div key={event.id} className="event">
-          <Link to={`/event/${event.id}`}>
+          <Link to={`/event/${event.id}`} className="event-label">
             <p>{formattedDateTime} ― {event.event_name}</p>
           </Link>
-          <Link to={`/event/edit/${event.id}`}>
-            <button type="submit" className="btn btn-primary">
-              Edit
+          <div className="buttons">
+            <Link to={`/event/edit/${event.id}`}>
+              <button type="submit">
+                Edit
+              </button>
+            </Link>
+            <button type="submit" id={event.id} onClick={this.deleteEvent}>
+              Delete
             </button>
-          </Link>
-          <button type="submit" className="btn btn-danger" id={event.id} onClick={this.deleteEvent}>
-            Delete
-          </button>
+          </div>
         </div>
       )
     })
@@ -90,10 +87,13 @@ class DayDetail extends Component {
       return <Redirect to={`/events/${this.props.match.params.day}`} />
     }
 
-    // moment(dateTime).local().format('MMMM Do YYYY')
+    if (this.state.loaded === false) {
+      return <div className="month loading">Loading...</div>
+    }
+
     return (
       <div id={this.props.dayInfo} className="day-detail">
-        <h3>April {this.props.match.params.day}th, 2018</h3>
+        <h3>{moment(this.state.events[0].event_time).local().format('MMMM Do YYYY')}</h3>
         {events}
       </div>
     )

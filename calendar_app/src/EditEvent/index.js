@@ -114,7 +114,7 @@ class EditEvent extends Component {
     }
 
     return (
-      <div>
+      <div className="edit-event">
         <h3>Edit event</h3>
         <form
           id="edit"
@@ -162,16 +162,14 @@ class EditEvent extends Component {
               />
             </label>
           </div>
-          <div className="">
-            <button type="submit" className="">
+          <div className="buttons">
+            <button type="submit">
               Save
             </button>
+            <button type="submit" onClick={this.deleteEvent}>
+              Delete
+            </button>
           </div>
-        </form>
-        <form className="">
-          <button type="submit" className="" onClick={this.deleteEvent}>
-            Delete
-          </button>
         </form>
       </div>
     )
