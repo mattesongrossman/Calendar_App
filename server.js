@@ -89,14 +89,22 @@ app.put("/api/event/:id", jsonParser, (request, response) => {
 })
 
 // Delete an event
-app.delete("/api/event/:id", (request, response) => {
-  const eventId = request.params.id
-  Event.findById(eventId)
-    .then(event => {
-      return event.delete(event.id)
-    })
-    .then(event => {
-      response.json(event)
+// app.delete("/api/event/:id", (request, response) => {
+//   const eventId = request.params.id
+//   Event.findById(eventId)
+//     .then(event => {
+//       return event.delete(event.id)
+//     })
+//     .then(event => {
+//       response.json(event)
+//     })
+// })
+//
+app.delete('/api/event/:id', (request, response) => {
+  const eventId = request.params.id;
+  Event.delete(eventId)
+    .then(eventInfo => {
+      response.redirect('/api/events');
     })
 })
 

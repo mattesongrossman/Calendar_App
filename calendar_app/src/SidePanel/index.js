@@ -9,9 +9,9 @@ class SidePanel extends Component {
     return (
       <div className="side-panel">
         {/* <h2>Side Panel</h2> */}
-        <Route path="/event/edit/:id" component={EditEvent} />
-        <Route path="/event/new" component={AddEvent} />
-        <Route path="/event/:id" component={DayDetail} />
+        <Route exact path="/event/edit/:id" component={EditEvent} />
+        <Route exact path="/event/new" component={AddEvent} />
+        <Route exact path="/event/:id" component={DayDetail} />
       </div>
     )
   }

@@ -90,15 +90,14 @@ class EditEvent extends Component {
 
   deleteEvent(evt) {
     evt.preventDefault()
-    const id = Number(this.props.match.params.id)
-    console.log("hi")
-    fetch(`http://localhost:4567/api/event/${id}`, { method: "DELETE" })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          deleted: true
-        })
+    const id = this.props.match.params.id;
+    fetch(`http://localhost:4567/api/event/${id}`, {
+      method: "DELETE"
+    }).then(() => {
+      this.setState({
+        deleted: true
       })
+    })
   }
 
   render() {
@@ -110,24 +109,24 @@ class EditEvent extends Component {
     if (edited) {
       return <Redirect to="/" />
     }
-    if (deleted) {
-      return <Redirect to="/" />
-    }
+    // if (deleted) {
+    //   return <Redirect to="/" />
+    // }
 
     return (
       <div>
-        <h2>Edit</h2>
+        <h3>Edit event</h3>
         <form
           id="edit"
           onChange={this.handleInputChange}
           onSubmit={this.editEvent}>
           <div className="">
             <label>
-              Event Name:
+              Event name:
               <input
                 type="text"
                 value={name}
-                className=""
+                className="name"
                 placeholder="Enter event name"
                 name="name"
               />
@@ -140,7 +139,7 @@ class EditEvent extends Component {
               <input
                 type="datetime-local"
                 value={time}
-                className=""
+                className="time"
                 placeholder="Enter time"
                 name="time"
               />
@@ -149,7 +148,7 @@ class EditEvent extends Component {
           <div className="">
             <label>Description: </label>
             <br />
-            <textarea name="edit" form="edit" value={description} />
+            <textarea name="description" form="edit" value={description} />
           </div>
           <div className="">
             <label>
@@ -157,7 +156,7 @@ class EditEvent extends Component {
               <input
                 type="text"
                 value={type}
-                className=""
+                className="type"
                 placeholder="Enter type"
                 name="type"
               />
@@ -169,8 +168,8 @@ class EditEvent extends Component {
             </button>
           </div>
         </form>
-        <form className="" onSubmit={this.deleteEvent}>
-          <button type="submit" className="">
+        <form className="">
+          <button type="submit" className="" onClick={this.deleteEvent}>
             Delete
           </button>
         </form>
