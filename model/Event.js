@@ -23,7 +23,8 @@ Event.findByYear = year => {
   return db.any(`
     SELECT *
     FROM events
-    WHERE EXTRACT(YEAR FROM event_time) = $1`,
+    WHERE EXTRACT(YEAR FROM event_time) = $1
+    ORDER BY event_time`,
     [year]
   )
 }
@@ -34,7 +35,8 @@ Event.findByMonth = (year, month) => {
     FROM events
     WHERE
       EXTRACT(YEAR FROM event_time) = $1 AND
-      EXTRACT(MONTH FROM event_time) = $2`,
+      EXTRACT(MONTH FROM event_time) = $2
+    ORDER BY event_time`,
     [year, month]
   )
 }
@@ -46,7 +48,8 @@ Event.findByDay = (year, month, day) => {
     WHERE
       EXTRACT(YEAR FROM event_time) = $1 AND
       EXTRACT(MONTH FROM event_time) = $2 AND
-      EXTRACT(DAY FROM event_time) = $3`,
+      EXTRACT(DAY FROM event_time) = $3
+    ORDER BY event_time`,
     [year, month, day]
   )
 }
