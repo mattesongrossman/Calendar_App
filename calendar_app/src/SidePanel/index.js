@@ -13,7 +13,7 @@ class SidePanel extends Component {
         <Route exact path="/event/edit/:id" component={EditEvent} />
         <Route exact path="/event/new" component={AddEvent} />
         <Route exact path="/event/:id" component={Event} />
-        {/* Eventually need to be /events/:year/:month/:day but for now just day */}
+        {/* Eventually needs to be /events/:year/:month/:day but for now just day */}
         <Route exact path="/events/:day" component={DayDetail} />
       </div>
     )

@@ -15,11 +15,20 @@ class DayDetail extends Component {
   }
 
   componentDidUpdate() {
-    // This works, but keeps updating forever...
-    // const day = this.props.match.params.day;
+    const day = this.props.match.params.day;
+    console.log(day);
+    // // This works, but keeps updating forever since this.state.currentDay is always 0...
     // if (day !== this.state.currentDay) {
     //   this.fetchDaysEvents();
     // }
+
+    // A little bit janky... grabbing the event_time of the first event on the selected day and taking the date and comparing it to the date in the url parameter
+    // Only works for days that have events in them, otherwise it throws an error
+    const dayInState = moment(this.state.events[0].event_time).format('YYYY-MM-DD').split('-')[2];
+    // console.log(dayInState);
+    if (day !== dayInState) {
+      this.fetchDaysEvents();
+    }
   }
 
   componentDidMount() {
@@ -27,7 +36,7 @@ class DayDetail extends Component {
   }
 
   fetchDaysEvents() {
-    // Eventually want to implement a way to have the year, month, day, in the url but for now hard coding
+    // Eventually want to implement a way to have the year, month, day, in the url hard coding for now
     const year = '2018';
     const month = '04';
     const day = this.props.match.params.day;
@@ -60,7 +69,6 @@ class DayDetail extends Component {
       // Convert the UTC time from the database into a more readable time
       var dateTime = moment.utc(event.event_time).toDate();
       const formattedDateTime = moment(dateTime).local().format('h:mm a');
-
       return (
         <div key={event.id} className="event">
           <Link to={`/event/${event.id}`}>
@@ -85,7 +93,7 @@ class DayDetail extends Component {
     // moment(dateTime).local().format('MMMM Do YYYY')
     return (
       <div id={this.props.dayInfo} className="day-detail">
-        <h3>{this.props.match.params.day}</h3>
+        <h3>April {this.props.match.params.day}th, 2018</h3>
         {events}
       </div>
     )

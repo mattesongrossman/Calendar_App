@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 body, html {
-  font-family: "Avenir", "Helvetica", sans-serif;
+  font-family: "Nunito", "Helvetica", sans-serif;
   background-color: #E7E5DF;
   color: #393E41;
 }
@@ -110,6 +112,7 @@ textarea {
 
 .day {
   border: 1px solid black;
+  border-radius: 5px;
   width: 115px;
   height: 115px;
 }
@@ -119,6 +122,11 @@ textarea {
   cursor: pointer;
 } */
 
+.day h3 {
+  background-color: #D3D0CB;
+  padding: 2px;
+}
+
 .calendar p {
   color: #393E41;
   font-size: 14px;
@@ -126,6 +134,15 @@ textarea {
 }
 
 .calendar p:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.calendar h3 {
+  color: #393E41;
+}
+
+.calendar h3:hover {
   opacity: 0.8;
   cursor: pointer;
 }
