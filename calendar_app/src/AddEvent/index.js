@@ -107,7 +107,7 @@ class AddEvent extends Component {
           </div>
           <div className="">
             <button type="submit" className="">
-              Submit
+              Add
             </button>
           </div>
         </form>

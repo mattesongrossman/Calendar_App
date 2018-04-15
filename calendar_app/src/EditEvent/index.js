@@ -107,11 +107,11 @@ class EditEvent extends Component {
     const { deleted } = this.state
 
     if (edited) {
+      return <Redirect to={`/event/${this.props.match.params.id}`} />
+    }
+    if (deleted) {
       return <Redirect to="/" />
     }
-    // if (deleted) {
-    //   return <Redirect to="/" />
-    // }
 
     return (
       <div>
@@ -164,7 +164,7 @@ class EditEvent extends Component {
           </div>
           <div className="">
             <button type="submit" className="">
-              Submit
+              Save
             </button>
           </div>
         </form>
