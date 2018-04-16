@@ -20,7 +20,8 @@ class Month extends Component {
   }
 
   makeWeeks(year, month) {
-    // Grab ^ year and month from url? Just passing a date in for now
+    // Grab ^ year and month from url and store it in state?
+    // Just passing a date when calling makeWeeks() in the componentDidMount for now
 
     // Create an empty array of weeks
     let weeks = [];
@@ -29,7 +30,6 @@ class Month extends Component {
 
     const startDate = moment(`${year}-${month}`).clone().startOf('month').startOf('week');
     const endDate = moment(`${year}-${month}`).clone().endOf('month').endOf('week');
-    // Need to figure out how to get rid of the extra days from previous and next month...
 
     // Iterate through each numeric day of the month
     while (startDate.isBefore(endDate)) {
@@ -43,7 +43,6 @@ class Month extends Component {
       // Add a day to the start date
       startDate.add(1, 'days');
     }
-    // console.log(weeks);
 
     this.setState({
       weeks: weeks,
@@ -52,8 +51,7 @@ class Month extends Component {
   }
 
   render() {
-    // console.log(this.state.weeks);
-
+    // If the weeks have not loaded, render a loading message
     if (this.state.weeksLoaded === false) {
       return <div className="month loading">Loading...</div>
     }
@@ -62,9 +60,9 @@ class Month extends Component {
     const currentMonth = this.state.weeks[1][0];
     const formattedMonth = moment(currentMonth, 'YYYY-MM-DD').format('MMMM').toUpperCase();
 
+    // Map over each week in the weeks array, and return a week component for each with the necessary info
     const weeks = this.state.weeks.map(week => {
       const weekNumber = moment(week[0]).week();
-      // console.log(weekNumber);
       return <Week key={weekNumber} weekInfo={week} currentMonth={currentMonth} />
     })
 

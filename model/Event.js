@@ -2,7 +2,6 @@ const db = require("../database/db-connection")
 
 const Event = {}
 
-// Will add user/session id part later
 Event.getAll = () => {
   return db.any(`
     SELECT *

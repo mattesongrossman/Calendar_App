@@ -47,10 +47,9 @@ class Day extends Component {
   }
 
   render() {
-    const splitDate = this.props.dayInfo.split('-');
-    // console.log(splitDate); // index 2 to get just the date
+    const splitDate = this.props.dayInfo.split('-'); // index 2 to get just the date
 
-    // console.log('events:', this.state.events);
+    // Map over each event in a day, and return a paragraph element that links to that event's detail page and contains the event name
     const events = this.state.events.map(event => {
       return (
         <Link to={`/event/${event.id}`} key={event.id}>
@@ -59,9 +58,9 @@ class Day extends Component {
       )
     })
 
-    // If this day is today, return a div with a className of today
     // Find today's date
     const today = moment().format('YYYY-MM-DD');
+    // If this day is today, return a div with a className of today (so it can be styled differently)
     if (this.props.dayInfo === today) {
       return (
         <div id={this.props.dayInfo} className="day today">
@@ -73,10 +72,11 @@ class Day extends Component {
       )
     }
 
-    // If the month is not the current month, return a div with a className of next-month
+    // Grab the current month passed from the month component
     const currentMonth = this.props.currentMonth.split('-')[1];
+    // Grab the month of this day
     const dayMonth = this.props.dayInfo.split('-')[1];
-    // console.log(currentMonth, dayMonth);
+    // If the month is not the current month, return a div with a className of next-month (so it can be styled differently)
     if (dayMonth !== currentMonth) {
       return (
         <div id={this.props.dayInfo} className="day next-month">

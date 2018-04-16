@@ -22,8 +22,6 @@ class AddEvent extends Component {
     this.handleInputChange = this.handleInputChange.bind(this)
   }
 
-  componentDidMount() {}
-
   handleInputChange(evt) {
     //selects the name of the input field
     const property = evt.target.name
@@ -66,7 +64,6 @@ class AddEvent extends Component {
     const { created } = this.state
 
     if (created) {
-      // return <Redirect to={`/event/${this.props.match.params.id}`} />
       return <Redirect to='/' />
     }
 

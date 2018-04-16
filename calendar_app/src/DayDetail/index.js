@@ -19,7 +19,6 @@ class DayDetail extends Component {
     // A little bit janky... grabbing the event_time of the first event on the selected day and taking the date and comparing it to the date in the url parameter
     // Only works for days that have events in them, otherwise it throws an error
     const dayInState = moment(this.state.events[0].event_time).format('YYYY-MM-DD').split('-')[2];
-    // console.log(dayInState);
     if (day !== dayInState) {
       this.fetchDaysEvents();
     }
@@ -30,7 +29,7 @@ class DayDetail extends Component {
   }
 
   fetchDaysEvents() {
-    // Eventually want to implement a way to have the year, month, day, in the url hard coding for now
+    // Eventually want to implement a way to have the year, month, day, in the url, but hard coding for now
     const year = '2018';
     const month = '04';
     const day = this.props.match.params.day;
@@ -59,7 +58,7 @@ class DayDetail extends Component {
   }
 
   render() {
-    // console.log('events:', this.state.events);
+    // Map over each event in the day, and return a div containing the event time/date, event name, edit and delete buttons, and links to each event's detail view
     const events = this.state.events.map(event => {
       // Convert the UTC time from the database into a more readable time
       var dateTime = moment.utc(event.event_time).toDate();
@@ -83,10 +82,12 @@ class DayDetail extends Component {
       )
     })
 
+    // If an event has been deleted, redirect back to the day detail
     if (this.state.deleted) {
       return <Redirect to={`/events/${this.props.match.params.day}`} />
     }
 
+    // If the day's event info has not loaded, render a loading message
     if (this.state.loaded === false) {
       return <div className="month loading">Loading...</div>
     }
