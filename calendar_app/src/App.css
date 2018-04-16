@@ -171,6 +171,10 @@ ul {
   background-color: #E7BB41;
 }
 
+.next-month {
+  opacity: 0.4;
+}
+
 .event p {
   margin-bottom: 5px;
 }

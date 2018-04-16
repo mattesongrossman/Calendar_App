@@ -3,7 +3,7 @@ import Day from '../Day';
 
 const Week = (props) => {
   const days = props.weekInfo.map(day => {
-    return <Day key={day} dayInfo={day} />
+    return <Day key={day} dayInfo={day} currentMonth={props.currentMonth} />
   })
 
   return (

@@ -59,17 +59,18 @@ class Month extends Component {
     }
 
     // Grab the current month from one of the weeks
-    const currentMonth = moment(this.state.weeks[1][0], 'YYYY-MM-DD').format('MMMM').toUpperCase();
+    const currentMonth = this.state.weeks[1][0];
+    const formattedMonth = moment(currentMonth, 'YYYY-MM-DD').format('MMMM').toUpperCase();
 
     const weeks = this.state.weeks.map(week => {
       const weekNumber = moment(week[0]).week();
       // console.log(weekNumber);
-      return <Week key={weekNumber} weekInfo={week} />
+      return <Week key={weekNumber} weekInfo={week} currentMonth={currentMonth} />
     })
 
     return (
       <div className="month">
-        <h2 className="month-header">{currentMonth}</h2>
+        <h2 className="month-header">{formattedMonth}</h2>
         <DaysOfWeek />
         {weeks}
       </div>
