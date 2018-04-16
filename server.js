@@ -18,6 +18,7 @@ app.use(cors())
 // Create application/json parser
 const jsonParser = bodyParser.json()
 
+
 // Get one user
 
 // Create new user
@@ -95,6 +96,7 @@ app.delete('/api/event/:id', (request, response) => {
       response.json(eventInfo)
     })
 })
+
 
 // Start server
 app.listen(4567, () => console.log("Express server listening on port 4567!"))
