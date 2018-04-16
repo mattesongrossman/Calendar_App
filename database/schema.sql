@@ -1,6 +1,6 @@
-CREATE DATABASE calendar_db;
-
-\c calendar_db;
+-- CREATE DATABASE calendar_db;
+--
+-- \c calendar_db;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS events CASCADE;
 

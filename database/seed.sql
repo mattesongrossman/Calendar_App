@@ -1,4 +1,4 @@
-\c calendar_db
+-- \c calendar_db
 
 INSERT INTO users
   (username, password, session_id)
