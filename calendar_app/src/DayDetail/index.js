@@ -67,7 +67,7 @@ class DayDetail extends Component {
       return (
         <div key={event.id} className="event">
           <Link to={`/event/${event.id}`} className="event-label">
-            <p>{formattedDateTime} ― {event.event_name}</p>
+            <li>{formattedDateTime} ― {event.event_name}</li>
           </Link>
           <div className="buttons">
             <Link to={`/event/edit/${event.id}`}>
@@ -94,7 +94,7 @@ class DayDetail extends Component {
     return (
       <div id={this.props.dayInfo} className="day-detail">
         <h3>{moment(this.state.events[0].event_time).local().format('MMMM Do YYYY')}</h3>
-        {events}
+        <ul>{events}</ul>
       </div>
     )
   }

@@ -5,6 +5,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom"
+import moment from 'moment';
 
 class EditEvent extends Component {
   constructor(props) {
@@ -106,6 +107,11 @@ class EditEvent extends Component {
     const { edited } = this.state
     const { deleted } = this.state
 
+    // Reformat the UTC date to be local time to be the defaultValue of the datetime-local input
+    // 2018-04-14T16:00:00.000Z --> 2018-04-14T12:00
+    const formattedTime = moment(time).local().format('YYYY-MM-DDThh:mm:ssZ').split(':', 2).join(':');
+    console.log(formattedTime);
+
     if (edited) {
       return <Redirect to={`/event/${this.props.match.params.id}`} />
     }
@@ -138,7 +144,7 @@ class EditEvent extends Component {
               Date:
               <input
                 type="datetime-local"
-                value={time}
+                value={formattedTime}
                 className="time"
                 placeholder="Enter time"
                 name="time"
