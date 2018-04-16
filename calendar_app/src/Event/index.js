@@ -38,7 +38,7 @@ class DayDetail extends Component {
   deleteEvent(evt) {
     evt.preventDefault()
     const eventId = this.props.match.params.id;
-    console.log(eventId);
+    // console.log(eventId);
     fetch(`http://localhost:4567/api/event/${eventId}`, {
       method: "DELETE"
     }).then(() => {

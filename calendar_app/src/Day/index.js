@@ -76,7 +76,7 @@ class Day extends Component {
     // If the month is not the current month, return a div with a className of next-month
     const currentMonth = this.props.currentMonth.split('-')[1];
     const dayMonth = this.props.dayInfo.split('-')[1];
-    console.log(currentMonth, dayMonth);
+    // console.log(currentMonth, dayMonth);
     if (dayMonth !== currentMonth) {
       return (
         <div id={this.props.dayInfo} className="day next-month">

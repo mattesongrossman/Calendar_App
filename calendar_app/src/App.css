@@ -13,11 +13,12 @@ body, html {
 /* Nav */
 .navbar {
   display: flex;
-  align-items:center;
+  align-items: center;
 }
 
 .app-header {
   flex-grow: 1;
+  display: flex;
 }
 
 .app-header h1 {
@@ -112,6 +113,8 @@ ul {
   text-align: center;
   border: 1px solid #393E41;
   border-top: 2px solid #393E41;
+  display: flex;
+  justify-content: space-between;
 }
 
 .days-of-week {
@@ -172,7 +175,7 @@ ul {
 }
 
 .next-month {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 
 .event p {

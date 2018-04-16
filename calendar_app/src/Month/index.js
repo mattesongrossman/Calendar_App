@@ -70,7 +70,11 @@ class Month extends Component {
 
     return (
       <div className="month">
-        <h2 className="month-header">{formattedMonth}</h2>
+        <h2 className="month-header">
+          <span className="previous-btn">&#8882;</span>
+          {formattedMonth}
+          <span className="next-btn">&#8883;</span>
+        </h2>
         <DaysOfWeek />
         {weeks}
       </div>
