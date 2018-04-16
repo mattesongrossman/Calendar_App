@@ -66,20 +66,21 @@ class AddEvent extends Component {
     const { created } = this.state
 
     if (created) {
-      return <Redirect to="/" />
+      // return <Redirect to={`/event/${this.props.match.params.id}`} />
+      return <Redirect to='/' />
     }
 
     return (
-      <div>
-        <h2>Add</h2>
+      <div className="add-event">
+        <h3>Add an event</h3>
         <form
           id="add"
           onChange={this.handleInputChange}
           onSubmit={this.createEvent}>
           <div className="">
             <label>
-              Event Name:
-              <input type="text" value={name} className="" name="name" />
+              Event name:
+              <input type="text" value={name} className="name" name="name" />
             </label>
           </div>
           <div className="" />
@@ -89,7 +90,7 @@ class AddEvent extends Component {
               <input
                 type="datetime-local"
                 value={time}
-                className=""
+                className="time"
                 name="time"
               />
             </label>
@@ -97,17 +98,17 @@ class AddEvent extends Component {
           <div className="">
             <label>Description: </label>
             <br />
-            <textarea name="description" form="add" value={description} />
+            <textarea name="description" form="add" value={description} className="desc" />
           </div>
           <div className="">
             <label>
               Type:
-              <input type="text" value={type} className="" name="type" />
+              <input type="text" value={type} className="type" name="type" />
             </label>
           </div>
           <div className="">
             <button type="submit" className="">
-              Submit
+              Add
             </button>
           </div>
         </form>

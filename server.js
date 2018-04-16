@@ -75,7 +75,7 @@ app.get("/api/events/:year/:month/:day", (request, response) => {
 app.post("/api/create", jsonParser, (request, response) => {
   const newEvent = request.body
   Event.create(newEvent).then(event => {
-    response.redirect(`/api/event/${event.id}`)
+    response.json(newEvent)
   })
 })
 
@@ -84,19 +84,15 @@ app.put("/api/event/:id", jsonParser, (request, response) => {
   const eventId = request.params.id
   const event = request.body
   Event.update(event).then(event => {
-    response.redirect(`/api/event/${eventId}`)
+    response.json(event)
   })
 })
 
 // Delete an event
-app.delete("/api/event/:id", (request, response) => {
-  const eventId = request.params.id
-  Event.findById(eventId)
-    .then(event => {
-      return event.delete(event.id)
-    })
-    .then(event => {
-      response.json(event)
+app.delete('/api/event/:id', (request, response) => {
+  const eventId = request.params.id;
+  Event.delete(eventId).then(eventInfo => {
+      response.json(eventInfo)
     })
 })
 

@@ -5,6 +5,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom"
+import moment from 'moment';
 
 class EditEvent extends Component {
   constructor(props) {
@@ -30,9 +31,9 @@ class EditEvent extends Component {
     fetch(`http://localhost:4567/api/event/${id}`)
       .then(response => response.json())
       .then(event => {
-        console.log('this is event by id:', event);
+        // console.log('this is event by id:', event);
         const {
-          id,
+          // id,
           event_name,
           event_time,
           event_description,
@@ -90,15 +91,14 @@ class EditEvent extends Component {
 
   deleteEvent(evt) {
     evt.preventDefault()
-    const id = Number(this.props.match.params.id)
-    console.log("hi")
-    fetch(`http://localhost:4567/api/event/${id}`, { method: "DELETE" })
-      .then(response => response.json())
-      .then(response => {
-        this.setState({
-          deleted: true
-        })
+    const id = this.props.match.params.id;
+    fetch(`http://localhost:4567/api/event/${id}`, {
+      method: "DELETE"
+    }).then(() => {
+      this.setState({
+        deleted: true
       })
+    })
   }
 
   render() {
@@ -107,27 +107,32 @@ class EditEvent extends Component {
     const { edited } = this.state
     const { deleted } = this.state
 
+    // Reformat the UTC date to be local time to be the defaultValue of the datetime-local input
+    // 2018-04-14T16:00:00.000Z --> 2018-04-14T12:00
+    const formattedTime = moment(time).local().format('YYYY-MM-DDThh:mm:ssZ').split(':', 2).join(':');
+    console.log(formattedTime);
+
     if (edited) {
-      return <Redirect to="/" />
+      return <Redirect to={`/event/${this.props.match.params.id}`} />
     }
     if (deleted) {
       return <Redirect to="/" />
     }
 
     return (
-      <div>
-        <h2>Edit</h2>
+      <div className="edit-event">
+        <h3>Edit event</h3>
         <form
           id="edit"
           onChange={this.handleInputChange}
           onSubmit={this.editEvent}>
           <div className="">
             <label>
-              Event Name:
+              Event name:
               <input
                 type="text"
                 value={name}
-                className=""
+                className="name"
                 placeholder="Enter event name"
                 name="name"
               />
@@ -139,8 +144,8 @@ class EditEvent extends Component {
               Date:
               <input
                 type="datetime-local"
-                value={time}
-                className=""
+                value={formattedTime}
+                className="time"
                 placeholder="Enter time"
                 name="time"
               />
@@ -149,7 +154,7 @@ class EditEvent extends Component {
           <div className="">
             <label>Description: </label>
             <br />
-            <textarea name="edit" form="edit" value={description} />
+            <textarea name="description" form="edit" value={description} />
           </div>
           <div className="">
             <label>
@@ -157,22 +162,20 @@ class EditEvent extends Component {
               <input
                 type="text"
                 value={type}
-                className=""
+                className="type"
                 placeholder="Enter type"
                 name="type"
               />
             </label>
           </div>
-          <div className="">
-            <button type="submit" className="">
-              Submit
+          <div className="buttons">
+            <button type="submit">
+              Save
+            </button>
+            <button type="submit" onClick={this.deleteEvent}>
+              Delete
             </button>
           </div>
-        </form>
-        <form className="" onSubmit={this.deleteEvent}>
-          <button type="submit" className="">
-            Delete
-          </button>
         </form>
       </div>
     )

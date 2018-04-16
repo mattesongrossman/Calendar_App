@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import DaysOfWeek from '../DaysOfWeek';
 import Week from '../Week';
 
 class Month extends Component {
@@ -57,15 +58,24 @@ class Month extends Component {
       return <div className="month loading">Loading...</div>
     }
 
+    // Grab the current month from one of the weeks
+    const currentMonth = this.state.weeks[1][0];
+    const formattedMonth = moment(currentMonth, 'YYYY-MM-DD').format('MMMM').toUpperCase();
+
     const weeks = this.state.weeks.map(week => {
       const weekNumber = moment(week[0]).week();
       // console.log(weekNumber);
-      return <Week key={weekNumber} weekInfo={week} />
+      return <Week key={weekNumber} weekInfo={week} currentMonth={currentMonth} />
     })
 
     return (
       <div className="month">
-        <h2 className="month-header"></h2>
+        <h2 className="month-header">
+          <span className="previous-btn">&#8882;</span>
+          {formattedMonth}
+          <span className="next-btn">&#8883;</span>
+        </h2>
+        <DaysOfWeek />
         {weeks}
       </div>
     )

@@ -1,17 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body, html {
+  font-family: "Nunito", "Helvetica", sans-serif;
+  background-color: #E7E5DF;
+  color: #393E41;
+}
+
 .view-window {
   display: flex;
 }
 
-
 /* Nav */
 .navbar {
   display: flex;
+  align-items: center;
 }
 
 .app-header {
-  font-size: 30px;
-  padding-left: 20px;
   flex-grow: 1;
+  display: flex;
+}
+
+.app-header h1 {
+  color: #44BBA4;
+  font-size: 30px;
+  margin: 0;
+  padding: 15px;
 }
 
 .nav-links {
@@ -20,32 +34,104 @@
 
 .nav-links a {
   padding: 20px;
+  color: #44BBA4;
+}
+
+.navbar p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 
 /* Side Panel */
-.side-panel h2 {
+.side-panel h3 {
   margin-top: 0;
 }
 
 .side-panel {
-  border: 1px solid black;
-  padding: 5px 10px;
+  border: 2px solid #393E41;
+  border-left: 1px solid #393E41;
+  padding: 30px;
   width: 100%;
+}
+
+.side-panel label {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+input {
+  margin: 5px 0;
+  width: 350px;
+}
+
+textarea {
+  width: 350px;
+  height: 40px;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+}
+
+.event li {
+  color: #393E41;
+  padding: 5px 5px 5px 0;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+.event-label {
+  flex-grow: 1;
+}
+
+.buttons button {
+  margin: 5px 5px 5px 0;
+}
+
+.day-detail,
+.event-info,
+.add-event,
+.edit-event {
+  width: 90%;
+  margin: 0 auto;
 }
 
 
 /* Calendar */
+.month-header {
+  text-align: center;
+  border: 1px solid #393E41;
+  border-top: 2px solid #393E41;
+  display: flex;
+  justify-content: space-between;
+}
+
 .days-of-week {
   width: 817px;
-  border: 1px solid black;
+  border: 1px solid #393E41;
   display: flex;
   justify-content: space-around;
 }
 
-.calendar h2 {
+.calendar h2, .calendar h3 {
   margin: 0;
   padding: 5px;
+}
+
+.calendar {
+  border-bottom: 1px solid #393E41;
+  border-left: 1px solid #393E41;
 }
 
 .week {
@@ -54,7 +140,44 @@
 }
 
 .day {
-  border: 1px solid black;
+  border: 1px solid #393E41;
+  border-radius: 5px;
   width: 115px;
   height: 115px;
+}
+
+.day h3 {
+  background-color: #D3D0CB;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 2px;
+}
+
+.calendar p {
+  font-size: 14px;
+  margin: 5px;
+}
+
+.calendar h3,
+.calendar p {
+  color: #393E41;
+}
+
+.calendar h3:hover,
+.calendar p:hover,
+.event p:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.today h3 {
+  background-color: #E7BB41;
+}
+
+.next-month {
+  opacity: 0.5;
+}
+
+.event p {
+  margin-bottom: 5px;
 }

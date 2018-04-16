@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Day extends Component {
   constructor(props) {
@@ -49,15 +50,49 @@ class Day extends Component {
     const splitDate = this.props.dayInfo.split('-');
     // console.log(splitDate); // index 2 to get just the date
 
-    console.log('events:', this.state.events);
-
+    // console.log('events:', this.state.events);
     const events = this.state.events.map(event => {
-      return <p key={event.id} id={event.id}>{event.event_name}</p>
+      return (
+        <Link to={`/event/${event.id}`} key={event.id}>
+          <p id={event.id}>{event.event_name}</p>
+        </Link>
+      )
     })
+
+    // If this day is today, return a div with a className of today
+    // Find today's date
+    const today = moment().format('YYYY-MM-DD');
+    if (this.props.dayInfo === today) {
+      return (
+        <div id={this.props.dayInfo} className="day today">
+          <Link to={`/events/${splitDate[2]}`}>
+            <h3>{splitDate[2]}</h3>
+          </Link>
+          {events}
+        </div>
+      )
+    }
+
+    // If the month is not the current month, return a div with a className of next-month
+    const currentMonth = this.props.currentMonth.split('-')[1];
+    const dayMonth = this.props.dayInfo.split('-')[1];
+    // console.log(currentMonth, dayMonth);
+    if (dayMonth !== currentMonth) {
+      return (
+        <div id={this.props.dayInfo} className="day next-month">
+          <Link to={`/events/${splitDate[2]}`}>
+            <h3>{splitDate[2]}</h3>
+          </Link>
+          {events}
+        </div>
+      )
+    }
 
     return (
       <div id={this.props.dayInfo} className="day">
-        <h2>{splitDate[2]}</h2>
+        <Link to={`/events/${splitDate[2]}`}>
+          <h3>{splitDate[2]}</h3>
+        </Link>
         {events}
       </div>
     )
