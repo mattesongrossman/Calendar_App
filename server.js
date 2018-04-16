@@ -3,6 +3,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
 const tokenService = require("./services/TokenService")
+const PORT = process.env.PORT || 4567
 
 // Require models
 const Event = require("./model/Event")
@@ -17,7 +18,6 @@ app.use(cors())
 
 // Create application/json parser
 const jsonParser = bodyParser.json()
-
 
 // Get one user
 
@@ -90,13 +90,14 @@ app.put("/api/event/:id", jsonParser, (request, response) => {
 })
 
 // Delete an event
-app.delete('/api/event/:id', (request, response) => {
-  const eventId = request.params.id;
+app.delete("/api/event/:id", (request, response) => {
+  const eventId = request.params.id
   Event.delete(eventId).then(eventInfo => {
-      response.json(eventInfo)
-    })
+    response.json(eventInfo)
+  })
 })
 
-
 // Start server
-app.listen(4567, () => console.log("Express server listening on port 4567!"))
+app.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`)
+})
