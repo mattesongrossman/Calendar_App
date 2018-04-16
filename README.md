@@ -60,3 +60,6 @@ User — user login info, hashed passwords, session data.
 
 ## Family Tree Diagram
 <img src="./img/family-tree/IMG_0303.JPG" width="600">
+
+## Style Guide
+<img src="./img/Style-Guide.png" width="900">
