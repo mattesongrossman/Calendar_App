@@ -6,6 +6,10 @@ const tokenService = require("./services/TokenService")
 const path = require('path');
 const PORT = process.env.PORT || 4567
 
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static(path.join(__dirname, "build")));
+}
+
 // Require models
 const Event = require("./model/Event")
 const User = require("./model/User")
