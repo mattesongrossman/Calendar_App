@@ -97,6 +97,14 @@ app.delete("/api/event/:id", (request, response) => {
   })
 })
 
+// In production, any request that doesn't match a previous route
+// should send the front-end application, which will handle the route.
+if (process.env.NODE_ENV == "production") {
+  app.get("/*", function(request, response) {
+    response.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`)
