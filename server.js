@@ -3,6 +3,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const app = express()
 const tokenService = require("./services/TokenService")
+const path = require('path');
 const PORT = process.env.PORT || 4567
 
 // Require models
