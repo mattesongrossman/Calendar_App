@@ -1,5 +1,5 @@
 const createUser = (newUsername, hashedPassword) => {
-  return fetch(`http://localhost:4567/api/create`, {
+  return fetch(`/api/create`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -11,7 +11,7 @@ const createUser = (newUsername, hashedPassword) => {
 }
 
 const login = (newUsername, hashedPassword) => {
-  return fetch(`http://localhost:4567/api/create`, {
+  return fetch(`/api/create`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
